@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-10-11T10:30:16.618Z</updated>
+  <updated>2023-10-11T11:33:04.373Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>20231011_新创世纪</title>
+    <link href="http://example.com/2023/10/11/20231011-%E6%96%B0%E5%88%9B%E4%B8%96%E7%BA%AA/"/>
+    <id>http://example.com/2023/10/11/20231011-%E6%96%B0%E5%88%9B%E4%B8%96%E7%BA%AA/</id>
+    <published>2023-10-11T11:31:53.000Z</published>
+    <updated>2023-10-11T11:33:04.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>新创世纪</p><p>Hello，World！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;新创世纪&lt;/p&gt;
+&lt;p&gt;Hello，World！&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
