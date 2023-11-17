@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>20231117_Notes</title>
+      <link href="/2023/11/17/20231117-Notes/"/>
+      <url>/2023/11/17/20231117-Notes/</url>
+      
+        <content type="html"><![CDATA[<pre><code>#include &lt;stdio.h&gt;#include &lt;cs50.h&gt;int main(void){    int n = 50;    char *s = "HI!";    int *p = &amp;n; // p 是一个 指向int类型变量 的地址 的 整数 8 bytes    // p 用来存储地址    printf("%i\n", n);    printf("%p\n", p); // %p 获取地址 &amp;n    // p 存储 n的位置 OR p 指向 n的位置    printf("%i\n", *p);    // 打印 p所指向的那个东西，De-reference 解引用=    printf("%p\n", s);    printf("%s\n", s);    // %s (String) 不仅仅是打印了个变量值，更是根据你提供的地址找到了TA！    // 这块一定要理解好，printf不需要找到*s,他只需要找到s，也就是这个字符串的第一位(s[0])开始的地方，然后遍历到\0就可以了，所以    // 我们这里没有写 *s，而是直接s。因为*s对应的就是s[0]这么一个单字母了，我们不需要这个    printf("%s\n", s + 1);    // s + 1 就是将起始位置向后移动了一位，于是只会打印出 “I!”    printf("%c %c\n", s[0], *(s + 0));    // %c 打印 *s 的字符 就是相当于s[0]，因为s指向的就是这个字符串起始位置，也就是H所在的位置    printf("%c %c\n", s[1], *(s + 1));    printf("%c %c\n", s[2], *(s + 2));    // 其实类似于 s[i] 的这种 “语法糖” ，在编译时是这样处理的：    // s[i] --&gt; *(s + i)    // 不用在乎数据类型的问题，编译器会自动为你换算    // 所以让我们做点禁忌的事情    // printf("%c\n", *(s + 20000));    // Segmentation fault (core dumped)    // 访问了不该访问的内存    // strcmp 做了个什么事情呢？    // 比如 s, t 是两个strings    // 我们怎么判断他们是否相等？    // i form 1 to n 判断 *(s + i) ?= *(t + i)    // strcmp(s, t) 就是帮你干了这么件事情    // 若是相同的，return 0;    // 若是字典序 s &gt; t, return 1;    // 若是字典序 s &lt; t, return -1;    string m = get_string("m: ");    string t = get_string("t: ");    printf("%p\n", m);    printf("%p\n", t);}</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>20231024_近期计划</title>
       <link href="/2023/10/24/20231024-%E8%BF%91%E6%9C%9F%E8%AE%A1%E5%88%92/"/>
       <url>/2023/10/24/20231024-%E8%BF%91%E6%9C%9F%E8%AE%A1%E5%88%92/</url>
