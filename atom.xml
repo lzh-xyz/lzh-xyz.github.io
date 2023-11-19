@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-11-17T06:53:31.938Z</updated>
+  <updated>2023-11-19T16:22:53.293Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>20231119_Sort</title>
+    <link href="http://example.com/2023/11/19/20231119-Sort/"/>
+    <id>http://example.com/2023/11/19/20231119-Sort/</id>
+    <published>2023-11-19T15:09:59.000Z</published>
+    <updated>2023-11-19T16:22:53.293Z</updated>
+    
+    <content type="html"><![CDATA[<p>写点排序算法的笔记：</p><h2 id="插入排序-InsertionSort-O-n-2"><a href="#插入排序-InsertionSort-O-n-2" class="headerlink" title="插入排序 InsertionSort O(n^2)"></a>插入排序 InsertionSort O(n^2)</h2><pre><code>void insertSort(int arr[], int begin, int end){    // int length = end - begin + 1;    for (int i = begin + 1; i &lt; end + 1; i++)    {        for (int j = i; j &gt; begin; j--)        {            if (arr[j] &lt; arr[j - 1])            {                swap(&amp;arr[j], &amp;arr[j - 1]);            }else            {                break;            }        }    }}</code></pre><p>排序算法的本质就是排个头，先把第一个固定住，然后看第二个，第二个要是比第一个矮，就swap一下。</p><p>然后看第三个，第三个有没有第二个矮，要是矮，swap，此时第三个变成了第二个，再判断一下它和第一个的关系。</p><p>循环往复，最后就排序完毕了。</p><hr><h2 id="快速排序-QuickSort-O-nlogn"><a href="#快速排序-QuickSort-O-nlogn" class="headerlink" title="快速排序 QuickSort O(nlogn)"></a>快速排序 QuickSort O(nlogn)</h2><pre><code>void QuickSort(int array[], int low , int high){       if(low&lt;high){    int index = array[low];    int i = low;    int j = high;    while (i&lt;j)    {        while (i&lt;j &amp;&amp; array[j] &gt;= index)        {            j--;        }        if (i&lt;j)        {            swap(&amp;array[i], &amp;array[j]);            i++;        }        while (i&lt;j &amp;&amp; array[i]&lt;index)        {            i++;        }        if(i&lt;j)        {            swap(&amp;array[i], &amp;array[j]);            j--;        }     }    array[i] = index;    QuickSort(array,low,i-1);    QuickSort(array,i+1,high);    }}</code></pre><p>快速排序是我接触的第一个排序算法，也是第一个利用到了分治和递归思想的算法。</p><p>说大白话就是<strong>分堆</strong>，我们先选一个“标准/标杆”(index), 这里我直接选的是第一项，然后我们把所有小于index的元素，都swap到index左边，大于index的元素都swap到右边。这样我们就获得了两堆数。之后对着这两堆数进行递归操作，反复的分堆分堆，分到什么时候呢？分到每个堆只有一个数字了，这也就意味着我们分完了。</p><p>在分堆的过程也是有讲究的，我们从数组的两端向中间移动。</p><pre><code>while (i&lt;j &amp;&amp; array[j] &gt;= index){    j--;}if (i&lt;j) // 这个判断就是防止因为i &gt;= j导致while终止，误操作swap，下面的if也是同理{    swap(&amp;array[i], &amp;array[j]);    i++; // 注意这个i++；}</code></pre><p>上面这段就是从最右端往左走，大的我们就留下，一旦发现小的，我们就直接swap到左边，同时从左边swap一个数字过来。可能你想问，如果我们swap过来的那个数字也小于index，应该放在左边怎么办呢？不急，我们接着往下看。</p><pre><code>while (i&lt;j &amp;&amp; array[i]&lt;index){    i++;}if(i&lt;j){    swap(&amp;array[i], &amp;array[j]);    j--;} </code></pre><p>这段开始我们从左端往右走，和上面的同理，小的我们留下，一旦发现大的，我们直接swap到右边，同时从右边swap一个数字过来。这个疑问又出现了，我们如果swap了一个大于index数字过来怎么办？</p><p>还好，循环会解决这些疑问。</p><p>当你进入下一轮最外层的while循环时，我们首先就会判断上一轮swap过来的**array [ j ]**满不满足我们的需求，如果不满足，果断扔回去。第二个也是同理。</p><p>就这样，不断的把数字扔来扔去，我们就得到了一个排好序的数组。</p><hr><h2 id="并归排序-mergeSort-O-nlogn"><a href="#并归排序-mergeSort-O-nlogn" class="headerlink" title="并归排序 mergeSort O(nlogn)"></a>并归排序 mergeSort O(nlogn)</h2><pre><code>void merge(int arr[], int left, int mid, int right){    int i, j, k;    int l = mid - left + 1;    int r = right - mid;    // 创建两个临时数组 L/R    int *L = (int *)malloc(l * sizeof(int));    int *R = (int *)malloc(r * sizeof(int));    // 把数字放进去    for (i = 0; i &lt; l; i++)    {        L[i] = arr[left + i];    }    for (j = 0; j &lt; r; j++)    {        R[j] = arr[mid + 1 + j];    }    // 开始分吧    i = 0;    j = 0;    k = left; // 众神归位    while (i &lt; l &amp;&amp; j &lt; r)    {        if (L[i] &lt;= R[j])        {            arr[k] = L[i];            i++;        }        else        {            arr[k] = R[j];            j++;        }        k++;    }    // 把剩下的元素处理干净    while (i &lt; l)    {        arr[k] = L[i];        i++;        k++;    }    while (j &lt; r)    {        arr[k] = R[j];        j++;        k++;    }    // free一下，养成好习惯    free(L);    free(R);}void mergeSort(int arr[], int left, int right){    if (left &lt; right) // 啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊，不要忘了比较这个啊啊啊啊啊啊啊啊啊啊啊啊啊啊    {        int mid = left + (right - left) / 2;        mergeSort(arr, left, mid);        mergeSort(arr, mid + 1, right);        merge(arr, left, mid, right);    }}</code></pre><p>明儿再写，回去睡觉😴</p><p>未完待续。</p><p>Mostly_Harmless.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;写点排序算法的笔记：&lt;/p&gt;
+&lt;h2 id=&quot;插入排序-InsertionSort-O-n-2&quot;&gt;&lt;a href=&quot;#插入排序-InsertionSort-O-n-2&quot; class=&quot;headerlink&quot; title=&quot;插入排序 InsertionSort O(n^2)&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>20231117_指针，地址，字符串</title>
     <link href="http://example.com/2023/11/17/20231117-Notes/"/>
     <id>http://example.com/2023/11/17/20231117-Notes/</id>
     <published>2023-11-17T00:19:16.000Z</published>
-    <updated>2023-11-17T06:53:31.938Z</updated>
+    <updated>2023-11-17T06:55:47.797Z</updated>
     
     <content type="html"><![CDATA[<p>写一下CS50学习过程中关于指针和地址部分的笔记和心得，其实就是在下面的注释部分，但是还是整理一下。</p><pre><code>#include &lt;stdio.h&gt;#include &lt;cs50.h&gt;int main(void){    int n = 50;    char *s = "HI!";    int *p = &amp;n; // p 是一个 指向int类型变量 的地址 的 整数 8 bytes    // p 用来存储地址    printf("%i\n", n);    printf("%p\n", p); // %p 获取地址 &amp;n    // p 存储 n的位置 OR p 指向 n的位置    printf("%i\n", *p);    // 打印 p所指向的那个东西，De-reference 解引用=    printf("%p\n", s);    printf("%s\n", s);    // %s (String) 不仅仅是打印了个变量值，更是根据你提供的地址找到了TA！    // 这块一定要理解好，printf不需要找到*s,他只需要找到s，也就是这个字符串的第一位(s[0])开始的地方，然后遍历到\0就可以了，所以    // 我们这里没有写 *s，而是直接s。因为*s对应的就是s[0]这么一个单字母了，我们不需要这个    printf("%s\n", s + 1);    // s + 1 就是将起始位置向后移动了一位，于是只会打印出 “I!”    printf("%c %c\n", s[0], *(s + 0));    // %c 打印 *s 的字符 就是相当于s[0]，因为s指向的就是这个字符串起始位置，也就是H所在的位置    printf("%c %c\n", s[1], *(s + 1));    printf("%c %c\n", s[2], *(s + 2));    // 其实类似于 s[i] 的这种 “语法糖” ，在编译时是这样处理的：    // s[i] --&gt; *(s + i)    // 不用在乎数据类型的问题，编译器会自动为你换算    // 所以让我们做点禁忌的事情    // printf("%c\n", *(s + 20000));    // Segmentation fault (core dumped)    // 访问了不该访问的内存    // strcmp 做了个什么事情呢？    // 比如 s, t 是两个strings    // 我们怎么判断他们是否相等？    // i form 1 to n 判断 *(s + i) ?= *(t + i)    // strcmp(s, t) 就是帮你干了这么件事情    // 若是相同的，return 0;    // 若是字典序 s &gt; t, return 1;    // 若是字典序 s &lt; t, return -1;    string m = get_string("m: ");    string t = get_string("t: ");    printf("%p\n", m);    printf("%p\n", t);}</code></pre><p>其实指针部分的主要问题就是C语言对于 * 这个符号的“滥用”。</p><p>1.int *p = &amp;n;<br>此时*的作用是<strong>定义指针</strong>，p 是一个<strong>指向int类型变量的地址</strong>的<strong>整数</strong>，大小为8 bytes。</p><p>p 可以理解为存储了<strong>n的位置</strong>，你知道p，也就能找到n，并且n在内存中的位置是确定的，尽管n的数值会改变，但是这个变量所在的位置是在其被定义的那个时候就确定了。</p><p>2.printf(“%i\n”, *p);<br>此时*的作用就是<strong>De-reference 解引用指针</strong>，寻找到p对应的那个“东西”。</p><hr><p>剩下的就是一些细枝末节的东西，例如：</p><p>%p就是打印p所指向的<strong>地址</strong><br>e.g:printf(“%p\n”, p); 输出的就是0x16b6c710c，也就是n所在的地址。</p><p>对于字符串 (char数组) 而言，printf中的%s，你只需要提供你想要打印的起始位置，printf函数会自动替你完成“<strong>往下走，直到\0</strong>”的步骤。</p><p>e.g:</p><pre><code>char *s = "HI!";printf("%p\n", s); // out:0x16ae1f108printf("%s\n", s); // out:HI! printf("%s\n", s + 1); // out:I!</code></pre><p>我们这里没有写 *s，而是直接写s。因为*s对应的就是s[0]所对应的这么一个单字母(H)了，我们不需要这个，我们需要的是起始位置，也就是起始的地址。</p><p>类似于 s[i] 的这种 “语法糖” ，在编译时是这样处理的：<strong>s[i] –&gt; *(s + i)</strong><br>不用担心，编译器会为你做好一切，这类语法🍬还是很好用的。</p><hr><p>来点<strong>禁忌</strong>的事情</p><p>比如我们写这么一个东西</p><pre><code>printf("%c\n", *(s + 200000));</code></pre><p>我们想访问一下 s后200000位内存存着些什么，但是运行的时候就是**Segmentation fault (core dumped)**，你访问了（我访问了/计算机访问了）不该访问的内存。</p><hr><p>我们再围绕字符串写一点点东西，比如<strong>strings.h</strong>库中的<strong>strcmp</strong>函数，它的实现原理就是：输入s, t两个strings。然后开始判断 *(s + i) ?= *(t + i)，其中i从0到n遍历。</p><p>若是相同的，return 0;<br>若是字典序 s &gt; t, return 1;<br>若是字典序 s &lt; t, return -1;</p><p>Mostly_Harmless</p><p>写于2023.11.16 下午二时</p>]]></content>
     
@@ -81,26 +102,6 @@ int main(void)
     <summary type="html">&lt;p&gt;新创世纪&lt;/p&gt;
 &lt;p&gt;Hello，World！&lt;/p&gt;
 </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2023/10/11/hello-world/"/>
-    <id>http://example.com/2023/10/11/hello-world/</id>
-    <published>2023-10-11T10:30:16.618Z</published>
-    <updated>2023-10-11T10:30:16.618Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new "My New Post"</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
       
     
     
