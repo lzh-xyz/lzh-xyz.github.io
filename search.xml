@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>CS106x_Notes</title>
+      <link href="/2023/11/26/CS106x-Notes/"/>
+      <url>/2023/11/26/CS106x-Notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="lecture3-Strings-Streams-Grid"><a href="#lecture3-Strings-Streams-Grid" class="headerlink" title="lecture3 Strings, Streams, Grid"></a>lecture3 Strings, Streams, Grid</h2><h3 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h3><pre><code>#include &lt;iostream&gt;#include &lt;string&gt;using namespace std;int main(void){    string s = "Hello,world!";    cout &lt;&lt; s &lt;&lt; endl;    cout &lt;&lt; s[0] &lt;&lt;endl;    cout &lt;&lt; (int)s[0] &lt;&lt; endl; // 72    s += "HAHA"; // Hello,world!HAHA    return 0;}</code></pre><p>和Java以及其他语言的的相同点：<br>1.index索引，s[0],s[1]……<br>2.字符位于’’/“”中，同时也有前面带有反斜杠\的转义序列。</p><p>一些不同：<br>类似于string相关函数的命名，C++有一些特有的命名与函数行为。以及存在一些特殊的结构差异。<br>最令人惊讶的是<strong>C++中居然有两种不同类型的字符串</strong></p><p>对于字符以及数组的处理，和C是一样的，当时更强大了。</p><p>你可以直接进行加+的操作，把一段字符串接到已知字符串的尾部，string+string/char。但是注意：使用 + 操作符会<strong>创建新的字符串对象，并复制两个操作数的内容</strong>。这可能导致频繁的<strong>内存分配和释放</strong>，影响性能，特别是在循环中。std::append方法在原始字符串的基础上<strong>直接追加内容，避免了创建新对象和复制的开销</strong>。这在<strong>大量连接操作</strong>时更为高效。<br>平时直接用+=就可以，简单方便</p><pre><code>// +std::string str1 = "Hello";std::string str2 = "World";std::string result = str1 + str2;  // 创建新对象，效率相对较低// appendstd::string str1 = "Hello";std::string str2 = "World";str1.append(str2);  // 在原始字符串上直接追加内容，更高效</code></pre><p>他可以直接比较字典序了，用&lt;/&gt;来进行，类似于!=/==的符号也可以直接使用。这是由于C++的一个特性决定的，operator overloaing，意味着你可以<strong>重新定义操作符</strong>，以让他们处理不同的数据类型。</p><p>string的一些member function如下：</p><ol><li>s.append(str) // add text to the end of a string</li><li>s.compare(str) // return -1, 0, 1 depending on relative ordering</li><li>s.erase(index, length) // delete text from a string starting at given index</li><li>s.find(str) / s.rfind(str) // first / last index where the start of <strong>str</strong> appears(returns string::nops if not found， string::nops means Invalid or non-existent position)</li><li>s.insert(index, str) //  add text into a string at a given index</li><li>s.length() / s.size() // return number of characters in this string</li><li>s.replace(index, len, str) // replace len chars at given index with new str</li><li>s.substr(start, length) / s.substr(start) //  the next length characters beginning at start(inclusive); if length omitted, grabs till end of string.</li></ol><p><strong>C++兼容C中的string类型(即char array)，处理方式也一样</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CARE7_CHATGPT</title>
+      <link href="/2023/11/20/CARE7-CHATGPT/"/>
+      <url>/2023/11/20/CARE7-CHATGPT/</url>
+      
+        <content type="html"><![CDATA[<p>CHATGPT IS FLUENT, CLEVER AND DANGEROUSLY CREATIVE.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CARE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>20231119_排序算法 Sort</title>
       <link href="/2023/11/19/20231119-Sort/"/>
       <url>/2023/11/19/20231119-Sort/</url>
