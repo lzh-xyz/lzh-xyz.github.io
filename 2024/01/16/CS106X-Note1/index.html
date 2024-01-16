@@ -9,7 +9,7 @@ using namespace name;
 例如：cout的全称是std::cout，这代表它是一个位于std names.."><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
 <pre><code class="cpp">using namespace name;
 </code></pre>
 <p>其中 <code>namespace</code>就是变量的作用域(scope)</p>
@@ -601,6 +601,143 @@ for (int i = 1; i &lt;= 8; i++) {
 <p>一个笑话：计算机科学家讨厌三件东西,redundancy(冗余),inefficiency(低效)和redundancy(冗余)</p>
 <ul>
 <li>Q5:为什么要在已经有<code>Vector</code>的情况下，还要在设计一个几乎相同的collection <code>LinkedList</code>呢？</li>
-<li>A5:因为两者内部是不同的实现方式</li>
+<li>A5:因为两者内部是不同的实现方式，前者是<code>Arrays</code>，后者是<code>Nodes</code></li>
 </ul>
+<hr>
+<h2 id="Abstract-data-types-ADTs"><a href="#Abstract-data-types-ADTs" class="headerlink" title="Abstract data types (ADTs)"></a>Abstract data types (ADTs)</h2><p>一类<strong>数据类型和操作方法</strong>的集合，主要关注<strong>这个集合能做什么</strong>，而不是<strong>它如何做什么</strong></p>
+<p>我们可以将<code>Vector</code>和<code>LinkedList</code>都归类为<code>list</code>.其他的一些ADTs还有：<code>stack, queue, set, map, graph</code></p>
+<h2 id="Stacks-and-queues"><a href="#Stacks-and-queues" class="headerlink" title="Stacks and queues"></a>Stacks and queues</h2><p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240116/1705372931222.webp" alt="1705372931222"></p>
+<h3 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h3><p><code>#include "stack.h"</code></p>
+<ul>
+<li>Add/remove from “top” only. Last-In, First-Out (LIFO)</li>
+<li>元素按照插入的顺序进行存储。我们认为他们没有序号(index)</li>
+<li>只能对最上面的(最后一个插入的)元素进行操作(add/remove/examine)</li>
+<li>基础的一些操作⬇️</li>
+<li><strong>push</strong>: Add an element to the top.</li>
+<li><strong>pop</strong>:  Remove the top element.</li>
+<li><strong>peek</strong>: Examine the top element.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>s.isEmpty()</code></td>
+<td>O(1)</td>
+<td>如果栈没有元素则返回真</td>
+</tr>
+<tr>
+<td><code>s.peek()</code></td>
+<td>O(1)</td>
+<td>返回栈顶元素但不移除它；如果栈为空则抛出错误</td>
+</tr>
+<tr>
+<td><code>s.pop()</code></td>
+<td>O(1)</td>
+<td>移除并返回栈顶元素；如果栈为空则抛出错误</td>
+</tr>
+<tr>
+<td><code>s.push(value);</code></td>
+<td>O(1)</td>
+<td>将给定值放到栈顶</td>
+</tr>
+<tr>
+<td><code>s.size()</code></td>
+<td>O(1)</td>
+<td>返回栈中元素的数量</td>
+</tr>
+</tbody></table>
+<pre><code class="cpp">Stack&lt;int&gt; s;              // {}
+
+s.push(42);                // {42}
+s.push(-3);                // {42, -3}
+s.push(17);                // {42, -3, 17}
+
+cout &lt;&lt; s.pop() &lt;&lt; endl;   // 17  (s is {42, -3})
+cout &lt;&lt; s.peek() &lt;&lt; endl;  // -3  (s is {42, -3})
+cout &lt;&lt; s.pop() &lt;&lt; endl;   // -3  (s is {42})
+</code></pre>
+<p><code>Stack</code>内部是通过<code>Arrays</code>或者<code>Vector</code>实现的</p>
+<ul>
+<li>“bottom” = index 0</li>
+<li>“top”    = index (size - 1)   (便于进行操作)</li>
+</ul>
+<p>当然，你也可以用<code>LinkedList</code>来实现</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p><code>#include "queue.h"</code></p>
+<ul>
+<li>Add to “back” only; remove from “front” only. First-In, First-Out(FIFO)</li>
+<li>元素按照按照插入顺序进行存储，没有index</li>
+<li>只能在队尾<code>add</code>，在前面<code>examine/remove</code></li>
+<li>基础的一些操作⬇️</li>
+<li><strong>enqueue</strong>: Add an element to the back.</li>
+<li><strong>dequeue</strong>: Remove the front element.</li>
+<li><strong>peek</strong>:    Examine the front element.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>q.dequeue()</code></td>
+<td>O(1)</td>
+<td>移除并返回队列前端的值；如果队列为空则抛出错误</td>
+</tr>
+<tr>
+<td><code>q.enqueue(value);</code></td>
+<td>O(1)</td>
+<td>在队列后端放置给定的值</td>
+</tr>
+<tr>
+<td><code>q.isEmpty()</code></td>
+<td>O(1)</td>
+<td>如果队列没有元素则返回真</td>
+</tr>
+<tr>
+<td><code>q.peek()</code></td>
+<td>O(1)</td>
+<td>返回队列前端的值但不移除；如果队列为空则抛出错误</td>
+</tr>
+<tr>
+<td><code>q.size()</code></td>
+<td>O(1)</td>
+<td>返回队列中元素的数量</td>
+</tr>
+</tbody></table>
+<p>和<code>Stacks</code>一样，必须将<strong>所有的元素出列</strong>才可以遍历它们。</p>
+<pre><code class="cpp">// process (and destory) an entire queue
+while (!q.isEmpty()) {
+   do something with q.dequeue();
+}
+</code></pre>
+<p>Another version:</p>
+<pre><code class="cpp">int size = q.size(); // 要注意，queue是FIFO，这一套操作下来，其实整体是没有改变的，先出来，再塞到末尾。这种方式不会丢失内容
+for (int i = 0; i &lt; size; i++) {
+   do something with q.dequeue();
+   (including possibly re-adding it to the queue)
+}
+</code></pre>
+<pre><code class="cpp">void mirror (Queue&lt;string&gt;&amp; p) {
+    Stack&lt;string&gt; s;
+    int size = p.size();
+    string tmp;
+    for (int i = 0; i &lt; size; i++) {
+        tmp = p.dequeue();
+        s.push(tmp);
+        p.enqueue(tmp);
+    }
+    for (int i = 0; i &lt; size; i++) {
+        p.enqueue(s.pop());
+    }
+}
+</code></pre>
+<hr>
+<p>P16</p>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/12/31/20231231-%E4%BF%A1/" title="20231231_信"><span class="has-text-weight-semibold">下一页: 20231231_信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Mostlyharmlessxyz"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Mostly_Hamrless 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
