@@ -6,10 +6,10 @@ using namespace name;
 这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 各自独立。例如我们有很多类似于cout的标识符，如歌你需要用cout来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)
 如果你在两个不同的namespace中使用了相同名称的变量、方法或者类的时候，这都是OK的。
 你在代码开头打上using namespace xxx;，这代表你希望获得xxx中所有东西的命名，以及你希望在程序中可以访问其所有内容。
-例如：cout的全称是std::cout，这代表它是一个位于std names.."><meta name="generator" content="Hexo 6.3.0">
+例如：cout的全称是std::cout，这代表它是一个位于std names.."><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets-and-Maps"><span class="toc-text">Sets and Maps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sets"><span class="toc-text">Sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maps"><span class="toc-text">Maps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lexicon"><span class="toc-text">Lexicon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-5"><span class="toc-text">Part 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-text">Recursion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backtracking"><span class="toc-text">backtracking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exhaustive-search"><span class="toc-text">exhaustive search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backtracking-1"><span class="toc-text">backtracking</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
 <pre><code class="cpp">using namespace name;
 </code></pre>
 <p>其中 <code>namespace</code>就是变量的作用域(scope)</p>
@@ -738,6 +738,407 @@ for (int i = 0; i &lt; size; i++) {
     }
 }
 </code></pre>
+<h2 id="Sets-and-Maps"><a href="#Sets-and-Maps" class="headerlink" title="Sets and Maps"></a>Sets and Maps</h2><h3 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h3><p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240116/1705410426723.jpg" alt="Sets"><br><code>#include "set.h"</code> &amp; <code>#include "hashset.h"</code></p>
+<ul>
+<li>包含若干<strong>不重复的</strong>元素。</li>
+<li>没有index，没有顺序，我们也不关系它们的顺序</li>
+<li>有两种实现方式：<code>Set</code> / <code>HashSet</code></li>
+<li><code>Set</code>会将数据存储在一个<strong>二叉树</strong>中。而<code>HashSet</code>则是将数据H<strong>ash化并用Array存储</strong></li>
+<li>同时，<code>Sets</code>也支持<strong>操作符的使用</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>Set</th>
+<th>HashSet</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>s.add(value);</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>向集合中添加给定值</td>
+</tr>
+<tr>
+<td><code>s.clear();</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>移除集合中的所有元素</td>
+</tr>
+<tr>
+<td><code>s.contains(value)</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>如果找到给定值则返回真</td>
+</tr>
+<tr>
+<td><code>s.isEmpty()</code></td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>如果集合中没有元素则返回真</td>
+</tr>
+<tr>
+<td><code>s.isSubsetOf(set)</code></td>
+<td>O(N log N)</td>
+<td>O(N)</td>
+<td>如果这个集合是另一个集合的子集则返回真</td>
+</tr>
+<tr>
+<td><code>s.remove(value);</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>从集合中移除给定值</td>
+</tr>
+<tr>
+<td><code>s.size()</code></td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>返回集合中的元素数量</td>
+</tr>
+<tr>
+<td><code>s.toString()</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>返回集合的字符串表示，例如 “{3, 42, -7, 15}”</td>
+</tr>
+<tr>
+<td><code>ostr &lt;&lt; s</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>将集合打印到流中</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>s1 == s2</code></td>
+<td>如果集合包含完全相同的元素则返回真</td>
+</tr>
+<tr>
+<td><code>s1 != s2</code></td>
+<td>如果集合不包含相同的元素则返回真</td>
+</tr>
+<tr>
+<td><code>s1 + s2</code></td>
+<td>返回集合 s1 和 s2 的并集（来自任一集合的元素）</td>
+</tr>
+<tr>
+<td><code>s1 += s2;</code></td>
+<td>将集合 s1 设置为 s1 和 s2 的并集（或向 s1 添加一个值）</td>
+</tr>
+<tr>
+<td><code>s1 * s2</code></td>
+<td>返回集合 s1 和 s2 的交集（在两个集合中都存在的元素）</td>
+</tr>
+<tr>
+<td><code>s1 *= s2;</code></td>
+<td>将集合 s1 设置为 s1 和 s2 的交集</td>
+</tr>
+<tr>
+<td><code>s1 - s2</code></td>
+<td>返回集合 s1 和 s2 的差集（在 s1 中但不在 s2 中的元素）</td>
+</tr>
+<tr>
+<td><code>s1 -= s2;</code></td>
+<td>将集合 s1 设置为s1 和 s2 的差集（或从 s1 中移除一个值）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Q6: 那我们什么时候需要用<code>Sets</code>来解决问题呢？</li>
+<li>A6: 例如：计算一些文本中<strong>有多少种单词</strong>(比如”to”出现了55次，也只算1种) </li>
+<li>Q7: 什么时候用<code>Set</code>，什么时候用<code>HashSet</code>呢？</li>
+<li>A7: 需要<strong>有序</strong>时，用前者；否则用后者以获得更快性能。</li>
+</ul>
+<h3 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h3><p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240116/1705415408686.jpg" alt="1705415408686"><br><code>#include "map.h"</code>; <code>#include "hashmap.h"</code>; </p>
+<pre><code class="cpp">Map&lt;string, int&gt; votes // maps from string keys to integer values
+</code></pre>
+<ul>
+<li>一种用来存储<strong>一对数据</strong>的collection, (key, value)。<code>key</code>相当于是<strong>索引</strong>，<code>value</code>是<strong>具体的值</strong></li>
+<li>同样的，我们也有两种的<code>Maps</code>类型：<code>Map</code> / <code>HashMap</code></li>
+<li>其内部原理和<code>Sets</code>几乎相同，<code>Map</code>用<strong>二叉树存储</strong>，而<code>HashMap</code>存储<strong>Hash化后的数据</strong>，利弊也是类似的</li>
+<li>基础的一些操作⬇️</li>
+<li><strong>m.put(key, value)</strong>: Add a key/value pair to the map.</li>
+<li><strong>m.get(key)</strong>:        Returns the value paired with the given key.(return a default value if the key is not found)</li>
+<li><strong>m.remove(key)</strong>:     Remove the given key and its paired value.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>Map</th>
+<th>HashMap</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>m.clear();</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>移除所有键/值对</td>
+</tr>
+<tr>
+<td><code>m.containsKey(key)</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>如果映射中有给定键的对应项则返回真</td>
+</tr>
+<tr>
+<td><code>m[key]</code> 或 <code>m.get(key)</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>返回给定键映射的值；如果未找到，则添加具有默认值的项</td>
+</tr>
+<tr>
+<td><code>m.isEmpty()</code></td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>如果映射不包含任何对则返回真</td>
+</tr>
+<tr>
+<td><code>m.keys()</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>返回映射中所有键的向量副本</td>
+</tr>
+<tr>
+<td><code>m[key] = value;</code> 或 <code>m.put(key, value);</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>添加一个键/值对；如果键已存在，替换其值</td>
+</tr>
+<tr>
+<td><code>m.remove(key);</code></td>
+<td>O(log N)</td>
+<td>O(1)</td>
+<td>移除给定键的任何对</td>
+</tr>
+<tr>
+<td><code>m.size()</code></td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>返回映射中对的数量</td>
+</tr>
+<tr>
+<td><code>m.toString()</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>返回映射的字符串表示，例如 “{a: 90, d: 60, c: 70}”</td>
+</tr>
+<tr>
+<td><code>m.values()</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>返回映射中所有值的向量副本</td>
+</tr>
+<tr>
+<td><code>ostr &lt;&lt; m</code></td>
+<td>O(N)</td>
+<td>O(N)</td>
+<td>将映射打印到流中</td>
+</tr>
+</tbody></table>
+<h3 id="Lexicon"><a href="#Lexicon" class="headerlink" title="Lexicon"></a>Lexicon</h3><p><code>#include "lexicon.h"</code></p>
+<ul>
+<li>有和<code>Sets</code>一样的方法和接口，就是一个<strong>大字典</strong></li>
+<li>默认就是存储<code>String</code>, 按<code>字典序</code>排列</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>Big-Oh</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Lexicon name;</code></td>
+<td>O(N*len)</td>
+<td>创建空词典或从文件读取</td>
+</tr>
+<tr>
+<td><code>Lexicon name("file");</code></td>
+<td>O(N*len)</td>
+<td>从文件创建词典</td>
+</tr>
+<tr>
+<td><code>L.add(word);</code></td>
+<td>O(len)</td>
+<td>向词典中添加给定单词</td>
+</tr>
+<tr>
+<td><code>L.addWordsFromFile("f");</code></td>
+<td>O(N*len)</td>
+<td>从输入文件添加所有单词（每行一个）</td>
+</tr>
+<tr>
+<td><code>L.clear();</code></td>
+<td>O(N*len)</td>
+<td>移除词典中的所有元素</td>
+</tr>
+<tr>
+<td><code>L.contains("word")</code></td>
+<td>O(len)</td>
+<td>如果在词典中找到单词则返回真</td>
+</tr>
+<tr>
+<td><code>L.containsPrefix("str")</code></td>
+<td>O(len)</td>
+<td>如果 s 是词典中任意单词的开始则返回真</td>
+</tr>
+<tr>
+<td><code>L.isEmpty()</code></td>
+<td>O(1)</td>
+<td>如果词典中没有单词则返回真</td>
+</tr>
+<tr>
+<td><code>L.remove("word");</code></td>
+<td>O(len)</td>
+<td>如果存在，则从词典中移除单词</td>
+</tr>
+<tr>
+<td><code>L.removePrefix("str");</code></td>
+<td>O(len)</td>
+<td>移除所有以特定前缀开始的单词</td>
+</tr>
+<tr>
+<td><code>L.size()</code></td>
+<td>O(1)</td>
+<td>返回词典中的单词数量</td>
+</tr>
+<tr>
+<td><code>L.toString()</code></td>
+<td>O(M)</td>
+<td>返回词典的字符串表示，例如 “{ ‘arm’, ‘cot’, ‘zebra’ }”</td>
+</tr>
+</tbody></table>
+<h1 id="Part-5"><a href="#Part-5" class="headerlink" title="Part 5"></a>Part 5</h1><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p><strong>self—similar</strong></p>
+<ul>
+<li><p>这描述了一种<strong>自己运行时调用自己</strong>的算法或处理方式</p>
+</li>
+<li><p>What is recursive programming?</p>
+</li>
+<li><p>Writting a function that calls itself.</p>
+</li>
+</ul>
+<p>eg: Factorial(N)</p>
+<pre><code class="cpp">int fact(int n){
+   if (n &lt;= 1){ 
+      return 1;      // Base case
+   }else{
+      int result = n * fact(n - 1); // Recursive case
+      return result;
+   }
+   
+}
+</code></pre>
+<ul>
+<li><p>recursion &amp; iteration</p>
+</li>
+<li><p>其实recursion在效率上是<strong>远远不如iteration</strong>的，尤其当其调用过多后，很有可能会造成<strong>stack overflow</strong>。很多问题也不适合利用recursion来解决。</p>
+</li>
+<li><p>Q8: 什么类型的问题或者算法适合用recursion来解决呢？</p>
+</li>
+<li><p>A8: 有<code>self-similar</code>(自相似)特性的算法。=&gt; 我怎么描述这个算法使得其能<strong>被一个更小更相似的版本</strong>来刻画</p>
+</li>
+<li><p><strong>base case</strong> : 最简单的情况，直接给出答案</p>
+</li>
+<li><p><strong>recursive case</strong> : 一些无法被直接回答的情况。但是你可以通过其他<strong>更小的更简单的</strong>情况来刻画它</p>
+</li>
+</ul>
+<h2 id="backtracking"><a href="#backtracking" class="headerlink" title="backtracking"></a>backtracking</h2><p>回溯</p>
+<p>这是一种采取recursion来解决**涉及对(true)错(false)**的问题的特定方法。<br>如果你遇到了false，那就通过backtracking来寻找争取的路。<br>我们先从<code>exhaustive search</code>(穷举搜索)开始。backtracking作为其一种形式</p>
+<h3 id="exhaustive-search"><a href="#exhaustive-search" class="headerlink" title="exhaustive search"></a>exhaustive search</h3><ul>
+<li><p>尝试每一种可能的组合</p>
+</li>
+<li><p>搜索空间经常包含许多<code>选择</code>，每一种选择都有很多的<code>可选项</code>。</p>
+</li>
+<li><p>什么时候我们可能会用到穷举搜索呢？ 例如：<strong>搜索目录树结构</strong>、<strong>对一组数值进行排列或搜索的情况</strong>(-&gt;逻辑组合、组合数学、名称、密码……)</p>
+</li>
+</ul>
 <hr>
-<p>P16</p>
+<ul>
+<li>一个通用的穷举搜索的伪代码：</li>
+</ul>
+<pre><code class="cpp">function Search(decisions):
+ - If there are decisions left to make:
+   // Let's handle one decision ourselves, and the rest by recursion.
+   For each available choice C for this decision:
+      - Choose C.
+      - Search the remaining decisions that could follow C.
+ - Otherwise, if there are no more decisions to make: Stop.
+</code></pre>
+<p>这里的<code>base case</code>不再代表<strong>一种简单普通的情况</strong>，而是代表<strong>走到头了</strong>，<strong>我这个stack已经堆到要求的高度了</strong>，没什么可以接着选了。</p>
+<hr>
+<p>例子：printBinary 打印指定位数的所有二进制数.</p>
+<pre><code class="cpp">void printBinary (int digits, string prefix = "") {
+   if (digits == 0) {
+      cout &lt;&lt; prefix &lt;&lt; endl; // 这个base case并不是什么都不做，而是将我们之前的成功(完整的prefix)打印出来
+   }else {
+      printBinary(digits - 1, prefix + "0");
+      printBinary(digits - 1, prefix + "1");
+   }
+}
+</code></pre>
+<p>printDecimal 打印所有的十进制数</p>
+<pre><code class="cpp">void printDecimal (int digits, string prefix = "") {
+   if (digits == 0) {
+      cout &lt;&lt; prefix &lt;&lt; endl; // 这个base case并不是什么都不做，而是将我们之前的成功(完整的prefix)打印出来
+   }else {
+      printDecimal(digits - 1, prefix + "0");
+      printDecimal(digits - 1, prefix + "1");
+      printDecimal(digits - 1, prefix + "2");
+      printDecimal(digits - 1, prefix + "3");
+      printDecimal(digits - 1, prefix + "4");
+      printDecimal(digits - 1, prefix + "5");
+      printDecimal(digits - 1, prefix + "6");
+      printDecimal(digits - 1, prefix + "7");
+      printDecimal(digits - 1, prefix + "8");
+      printDecimal(digits - 1, prefix + "9");
+   }
+}
+</code></pre>
+<p>permute 打印所有字母的排列组合</p>
+<pre><code class="cpp">void permute (string s, string perfix = "") {
+    int length = s.length();
+    if (length &lt; 1) {
+        cout &lt;&lt; perfix &lt;&lt; endl;
+    }else {
+        for (int i = 0; i &lt; length; i++) {
+            char x = s[i];
+            string y = s;
+            y.erase(i,1);
+            permute(y, perfix + x);
+        }
+    }
+}
+</code></pre>
+<h3 id="backtracking-1"><a href="#backtracking-1" class="headerlink" title="backtracking"></a>backtracking</h3><p>回溯法是<strong>穷尽搜索</strong>和<strong>筛选</strong>相结合的一种方法，它在探索解空间的时候，加入了<em>过滤</em>的思想。这样我们就可以<strong>找到问题的最优解或者满足特定条件的解决方案</strong></p>
+<ul>
+<li><p>这是一种暴力技巧，它会检查所有的可能性(至少确保考虑了所有情况)</p>
+</li>
+<li><p>同时，由于这类算法和策略通常具有<strong>自相似性</strong>，通过递归来实现解决方案通常会<strong>更加直观和易于理解</strong></p>
+</li>
+<li><p>-&gt; 递归能够更自然的表达问题与解决方案之间的关系，使代码更易读以及可维护</p>
+</li>
+<li><p>backtracking的伪代码：</p>
+</li>
+</ul>
+<pre><code class="cpp">function Search(decisions):
+ - If there are decisions left to make:
+   // Let's handle one decision ourselves, and the rest by recursion.
+   For each available choice C for this decision:
+      - Choose C.
+      - Search the remaining decisions that could follow C.
+      - **Un-choose C** -&gt;(Backtrack!)
+ - Otherwise, if there are no more decisions to make: Stop.
+</code></pre>
+<p>在进行选择时，你会修改目前的状态，而在后续的搜索过程中，你会发现这种修改<strong>并不符合你的要求或者期望</strong>。因此，你需要<strong>撤销之前的选择</strong>，回到之前的状态，以便重新尝试其他的选择。-&gt; 确保你可以找到满足条件的解决方案</p>
+<p>Lec12</p>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/12/31/20231231-%E4%BF%A1/" title="20231231_信"><span class="has-text-weight-semibold">下一页: 20231231_信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Mostlyharmlessxyz"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Mostly_Hamrless 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
