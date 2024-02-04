@@ -3,17 +3,17 @@
 using namespace name;
 
 其中 namespace就是变量的作用域(scope)
-这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 各自独立。例如我们有很多类似于cout的标识符，如歌你需要用cout来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)
+这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 各自独立。例如我们有很多类似于cout的标识符，如果你需要用cout来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)
 如果你在两个不同的namespace中使用了相同名称的变量、方法或者类的时候，这都是OK的。
 你在代码开头打上using namespace xxx;，这代表你希望获得xxx中所有东西的命名，以及你希望在程序中可以访问其所有内容。
-例如：cout的全称是std::cout，这代表它是一个位于std names.."><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
-
+例如：cout的全称是std::cout，这代表它是一个位于std names.."><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets-and-Maps"><span class="toc-text">Sets and Maps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sets"><span class="toc-text">Sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maps"><span class="toc-text">Maps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lexicon"><span class="toc-text">Lexicon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-5"><span class="toc-text">Part 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-text">Recursion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backtracking"><span class="toc-text">backtracking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exhaustive-search"><span class="toc-text">exhaustive search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backtracking-1"><span class="toc-text">backtracking</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
+<link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets-and-Maps"><span class="toc-text">Sets and Maps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sets"><span class="toc-text">Sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maps"><span class="toc-text">Maps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lexicon"><span class="toc-text">Lexicon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-5"><span class="toc-text">Part 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-text">Recursion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backtracking"><span class="toc-text">backtracking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exhaustive-search"><span class="toc-text">exhaustive search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backtracking-1"><span class="toc-text">backtracking</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-6"><span class="toc-text">Part 6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Structs"><span class="toc-text">Structs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Classes-and-Objects"><span class="toc-text">Classes and Objects</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doubly-Linked-List-Skip-Lists"><span class="toc-text">Doubly Linked List &amp; Skip Lists</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-7"><span class="toc-text">Part 7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-text">Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="toc-text">两种声明方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-each"><span class="toc-text">for-each</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%82%B9%E5%85%B3%E4%BA%8E%E6%A0%88%E7%9A%84%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="toc-text">一点关于栈的题外话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-Stack-%E6%98%AF%E5%A6%82%E4%BD%95%E4%BE%9D%E8%B5%96-Arrays%E6%9D%A5%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-text">Vector&#x2F;Stack 是如何依赖 Arrays来工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shallow-copy-bug-%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%94%99%E8%AF%AF"><span class="toc-text">shallow copy bug(浅拷贝错误)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graphs-%E5%9B%BE"><span class="toc-text">Graphs(图)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%9A%84%E6%9C%AF%E8%AF%AD"><span class="toc-text">一些关于图的术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weighted-Graph-%E5%8A%A0%E6%9D%83%E5%9B%BE"><span class="toc-text">Weighted Graph(加权图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Directed-Graph-digraph-%E5%8D%95%E5%90%91%E5%9B%BE"><span class="toc-text">Directed Graph&#x2F;digraph(单向图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binary-tree-%E4%BA%8C%E5%8F%89%E6%A0%91-Linked-List-%E9%93%BE%E8%A1%A8"><span class="toc-text">binary tree(二叉树)&#x2F;Linked List(链表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stanford-BasicGraph"><span class="toc-text">Stanford BasicGraph</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS-BFS"><span class="toc-text">DFS&#x2F;BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-first-search-DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">Depth-first search(DFS深度优先搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DFS%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">DFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-first-search-BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">Breadth-first search(BFS广度优先搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BFS%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">BFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra%E2%80%99s-Algorithm"><span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Algorithm"><span class="toc-text">A* Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Heuristic-%E5%90%AF%E5%8F%91%E5%BC%8F"><span class="toc-text">Heuristic(启发式)</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
 <pre><code class="cpp">using namespace name;
 </code></pre>
 <p>其中 <code>namespace</code>就是变量的作用域(scope)</p>
-<p>这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 <strong>各自独立</strong>。<br>例如我们有很多类似于<code>cout</code>的标识符，如歌你需要用<code>cout</code>来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)</p>
+<p>这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 <strong>各自独立</strong>。<br>例如我们有很多类似于<code>cout</code>的标识符，如果你需要用<code>cout</code>来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)</p>
 <p>如果你在两个不同的<code>namespace</code>中使用了相同名称的变量、方法或者类的时候，这都是OK的。</p>
 <p>你在代码开头打上<code>using namespace xxx;</code>，这代表你希望获得<code>xxx</code>中所有东西的命名，以及你希望在程序中可以访问其所有内容。</p>
 <p>例如：<code>cout</code>的全称是<code>std::cout</code>，这代表它是一个位于<code>std namespace</code>的变量。<br>但是我们一遍遍打 <strong>std::</strong> 有些痛苦，加上<code>using namespace std;</code>，就可以不用在<code>cout</code>的前面加上<code>std::</code>了。</p>
@@ -563,6 +563,7 @@ names.insert(0, "Liu")  //{"Liu", "Tom", "Jay"}
 </code></pre>
 <ul>
 <li><strong>注意⚠️！！</strong> <strong>是<code>Vector</code>,V要大写</strong></li>
+<li>为什么从后往前查找呢？</li>
 </ul>
 <h3 id="Vector-insert"><a href="#Vector-insert" class="headerlink" title="Vector insert"></a>Vector insert</h3><p><code>Vector</code>内部是用<code>Arrays</code>来实现的，那么是如何实现动态容量的呢？</p>
 <p>由于<code>Arrays</code>本身并没有调整大小的功能，所以size总会比我们实际所需的大一些。例如我们创建了一个包含<code>6个int的Vector</code>，那么他的实际大小可能是10/20/30… 但是<strong>这个实际大小确实是固定的</strong>，当我们所需的大小超过了目前的实际大小，那么就会<strong>重新创建</strong>一个实际大小更大的<code>Arrays</code>，<strong>并把原来的数据Copy过去</strong></p>
@@ -1140,5 +1141,525 @@ for (int i = 0; i &lt; size; i++) {
  - Otherwise, if there are no more decisions to make: Stop.
 </code></pre>
 <p>在进行选择时，你会修改目前的状态，而在后续的搜索过程中，你会发现这种修改<strong>并不符合你的要求或者期望</strong>。因此，你需要<strong>撤销之前的选择</strong>，回到之前的状态，以便重新尝试其他的选择。-&gt; 确保你可以找到满足条件的解决方案</p>
-<p>Lec12</p>
+<ul>
+<li><strong>8皇后问题</strong></li>
+<li>在8×8格的国际象棋上摆放8个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法</li>
+<li>很明显的解决思路是： 我们应在放置一个皇后时，通过其被摆放的位置，来限制接下来皇后可能存在的位置，来减少查找空间的大小。这样可以逐步缩小解的范围，使我们更快的找到有效的解决方案</li>
+</ul>
+<h1 id="Part-6"><a href="#Part-6" class="headerlink" title="Part 6"></a>Part 6</h1><h2 id="Structs"><a href="#Structs" class="headerlink" title="Structs"></a>Structs</h2><p>一种*<strong>轻量化的</strong>类，相当于给各类数据打了个包。</p>
+<pre><code class="cpp">struct Date {     // 声明一个structure的名称
+   int month;
+   int day;       // 各类成员的名称与类型
+}
+···
+
+Date today;       //初始化
+today.month = 10;
+today.day = 23;
+
+Date xmas = {12, 25}; // 按顺序来实现初始化+赋值
+</code></pre>
+<p>当然，你也可以在里面写一些<strong>你定义的函数</strong>，在这些函数里，你可以<strong>直接 使用结构体里的变量</strong></p>
+<pre><code class="cpp">struct Date {     
+   int month;
+   int day;       
+
+   int daysInMonth() { 
+      if (month == 9 || month == 4
+      ||  month == 6 || month == 11) {
+         return 30;
+      }else if (month == 2) {
+         return 28; // 这里就不考虑闰年的情况了
+      }else { return 31; }
+   }
+
+   string toString() {
+      return integerToString(month) + "/" + integerToString(day);
+   }
+}
+</code></pre>
+<p>结构体里的东西默认是公开的(public)，意味着你可以直接访问它并查看其变量的值。<br>而对于类来说，里面的东西默认是私有的(private)，意味着当你想直接访问/修改里面的变量，编译器会报错：你没有这个权限</p>
+<ul>
+<li><p>空指针：本身的所处内存并不是NULL，而是其指向的是NULL。nullptr就像宇宙中的无边黑暗</p>
+</li>
+<li><p>垃圾指针：没有进行初始化，故其指向某个随机地方的指针。也就是随机<strong>生成</strong>一个地址数字存储起来，这个内存中可能存储着<strong>你绝不可以碰触的数字</strong></p>
+</li>
+<li><p>-&gt; 所以我们<strong>声明一个新指针时</strong>，务必要<strong>为其赋予初值</strong></p>
+</li>
+</ul>
+<pre><code class="cpp">int* p = nullptr;
+if(p)....         // false p是否不为nullptr
+if(!p)...         // true p是否为nullptr 
+</code></pre>
+<p><code>type* name = new type(parameters);</code></p>
+<p><strong>运行中的程序</strong>是将所有的变量存储在一个 <strong>栈(stack)</strong> 中</p>
+<p>当一个函数完成其任务，所有的局部变量的使命也就完成了。我们就会将这些变量占用的内存空间回收，用于存放新的数据。从技术来讲，当这些变量消失的时候，实际上就是<strong>栈被压缩了</strong></p>
+<p>还有另外一块存储空间 - <strong>堆(heap)<strong>。<br>当你使用<code>new</code>语句来申请空间时，就会在heap里申请一块空间，并返回一个指针。<br>并且这块内存并不会随着某个函数的运行结束而被</strong>自动释放</strong>，只会被手动<strong>free up</strong></p>
+<p>从整体来看，内存中存储变量是连续的，但两者在<strong>生命周期上是完全无关的</strong>。故我们将这两块区域视为<strong>相对独立</strong>的。<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240129/image.6361ak1emao0.webp" alt="image"></p>
+<pre><code class="cpp">struct ListNode {
+   int data;
+   ListNode* next;
+}
+</code></pre>
+<p>在C++中，你<strong>不能定义一个指向引用的指针</strong>，这是不被允许的。故你可以传递<em><em>指针的引用（</em>&amp;）</em><em>，但是不能传递**指向引用的指针(&amp;</em>)**</p>
+<p>双重指针(**)会使代码显得极为臃肿，故不推荐使用</p>
+<pre><code class="cpp">int size(ListNode* front) {
+   int cnt = 0;
+   ListNode* tmp = front;
+   while (tmp != nullptr){
+      tmp = tmp-&gt;next;
+      cnt++;
+   }
+   return cnt;
+}
+
+int get(ListNode* front, int index) {
+   ListNode* tmp = front;
+   for (int i = 0; i &lt; index; i++) {
+      tmp = tmp-&gt;next;
+   }
+   return tmp-&gt;data;
+}
+
+void add(ListNode*&amp; front, int value) { 
+   // ⬆️⬆️必须是引用&amp;，否则就不会影响头节点
+   // create a new node
+   ListNode* newNode = new ListNode(value);
+
+   if (front == nullptr) {
+      front = newNode;
+   } else {
+      ListNode* tmp = front;
+      while (tmp-&gt;next != nullptr) {
+         tmp = tmp-&gt;next;
+      }
+      tmp -&gt; next = newNode;
+   }
+}
+
+void addFirst(ListNode*&amp; front, int value) {
+   front = new ListNode(value, front);
+}
+
+void removeFirst(ListNode*&amp; front) {
+   if (front != nullptr) {
+      ListNode* tmp = front;
+      front = front-&gt;next;
+      delete tmp;
+   }
+}
+void remove(ListNode*&amp; front, int index) {
+   if (front != nullptr) {
+      ListNode* tmp_1 = front;
+      for (int i = 0; i &lt; index - 1; i++) {
+         tmp_1 = tmp_1-&gt;next;
+      }
+      ListNode* trash = tmp_1-&gt;next;
+      tmp_1-&gt;next = trash-&gt;next;
+      delete trash;
+   }
+}
+</code></pre>
+<h2 id="Classes-and-Objects"><a href="#Classes-and-Objects" class="headerlink" title="Classes and Objects"></a>Classes and Objects</h2><ul>
+<li>Class: 一种数据对象的模板，定义了属于这种类型的内容，包括其存储的数据和行为</li>
+<li>数据 -&gt; <strong>成员变量</strong>(存储在对象内部的变量)</li>
+<li>对象内部的函数和行为 -&gt; <strong>成员函数/方法</strong> </li>
+<li><strong>构造函数</strong> 可以在对象被创建、被初始化时设置对象的状态</li>
+</ul>
+<p>面向对象编程(OOP)的思想：你的<strong>大部分代码都与对象有关</strong>，这些对象执行任务，并与其他对象相互协作。</p>
+<p>提供了抽象(abstraction)的概念: 我并不需要知道其内部的运行原理，我只需要知道<strong>如何去使用它</strong></p>
+<ul>
+<li>C++中的类被分成了两种代码文件: </li>
+<li>.h: 头文件，负责<strong>声明</strong>(declarations)</li>
+<li>.cpp: 源文件，负责<strong>定义</strong>(method bodies)写清楚具体的实现方式</li>
+<li>例如你想写一个名为<code>Foo</code>的class，就要有<code>Foo.h &amp; Foo.cpp</code></li>
+<li>好处在于：别人只需要看你的头文件即可知道你所定义的方法和参数，而不需要关心位于源文件的具体实现方式。</li>
+</ul>
+<hr>
+<p>那么如何编写一个头文件呢？<br>⬇️这是一个基本的结构<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.6t4y9bwtydxc.webp" alt="image"></p>
+<pre><code class="cpp">#ifndef _classname_h
+#define _classname_h
+// 预处理，防止重复声明定义
+class ClassName {
+public:                                   // in ClassName.h
+   ClassName(parameters);                 // constructor
+
+   returnType name(parameters);           // member functions
+   returnType name(parameters);           // (behavior inside
+   returnType name(parameters);           // each object)
+
+private:
+   type name;     // member variables
+   type name;     // (data inside each object)
+
+}; // IMPORTANT: must put a semicolon at end of class declaration(argh)
+#endif
+</code></pre>
+<p>通过<code>const</code>用法，你可以使得一些东西不会被改变</p>
+<pre><code class="cpp">const int x = 4;
+
+void foo(const BankAccount&amp; ba){
+   ···
+}
+
+class BankAccount {
+   ····
+   double getBalance() const;    // 意味着getBalance将不会改变BankAccount 
+}
+</code></pre>
+<hr>
+<p>操作符重载(Operator overloading)</p>
+<p>unary(一元) + - ++ – * &amp; ! ~ new delete<br>binary(二元) + - * / % += -= *= /= %= &amp; | &amp;&amp; || ^ == != &lt; &gt; &lt;= &gt;= = [ ] -&gt; ( ) </p>
+<pre><code class="cpp">returnType operator op(parameters);    //.h
+returnType operator op(parameters) {   //.cpp
+   statements;
+}
+</code></pre>
+<p>在C++中有一个比较有趣的玩法，可以<strong>让某些函数/方法访问到private内的数据</strong>，就是在前面加上<code>friend</code>关键字</p>
+<hr>
+<p><strong>Destructor 析构函数</strong></p>
+<p>如果你的对象中涉及到了指针或者在堆中创建的新对象，那在析构函数中释放他们就很有必要了-&gt;避免内存泄漏。</p>
+<pre><code class="cpp">~ClassName();                    // ClassName.h
+ClassName::~ClassName() {···}   // ClassName.cpp
+</code></pre>
+<h2 id="Doubly-Linked-List-Skip-Lists"><a href="#Doubly-Linked-List-Skip-Lists" class="headerlink" title="Doubly Linked List &amp; Skip Lists"></a>Doubly Linked List &amp; Skip Lists</h2><ul>
+<li><p>Doubly Linked List: 每个节点都有<code>prev</code>和<code>next</code>两个指针。同时我们要维护两个指针<code>front</code>和<code>back</code>，一头一尾，这样我们就可以双向遍历Lists。缺点就是会占用更多的内存，以及维护和修改起来更为困难</p>
+</li>
+<li><p>Skip List: 有序的List。每个节点包含存储<code>next</code>指针的<code>vector</code>/<code>array</code>。使得查找、增加或者删除元素的时间复杂度都可以达到O(logN)<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.457bredn5h34.webp" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.4esn1dyqplz4.webp" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.4rsxngc83ekg.webp" alt="image"></p>
+</li>
+</ul>
+<hr>
+<h1 id="Part-7"><a href="#Part-7" class="headerlink" title="Part 7"></a>Part 7</h1><h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h3 id="两种声明方式"><a href="#两种声明方式" class="headerlink" title="两种声明方式"></a>两种声明方式</h3><ol>
+<li><strong>type name[length]</strong>;</li>
+</ol>
+<ul>
+<li>位于栈上，有固定大小，内存自动释放</li>
+</ul>
+<ol start="2">
+<li><strong>type* name</strong> = new <strong>type[length]</strong>;</li>
+</ol>
+<ul>
+<li>位于堆上，指针(意味着你可以<strong>创造一个更大的数组</strong>然后让指针指向<strong>新的数组</strong>)，内存不会自动释放</li>
+</ul>
+<p>你可以根据你所需的<strong>生命周期</strong>来<strong>选择不同的声明方式</strong>。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>由于C++是一个<strong>追求效率</strong>的语言，故在没有特殊要求的时候，它是不会遍历整个数组并设置成0的。</p>
+<p>如果你想初始化，可以想下面这么写⬇️</p>
+<pre><code class="cpp">type* name = new type[length](); // initialize to 0
+</code></pre>
+<p>或者你也可以这么写⬇️</p>
+<pre><code class="cpp">type name[length] {};            // initialize to 0
+</code></pre>
+<p>第二种写法更类似于一种trick</p>
+<h3 id="for-each"><a href="#for-each" class="headerlink" title="for-each"></a>for-each</h3><p>数组本身也是支持<code>for-each</code>循环的。</p>
+<pre><code class="cpp">int a[4] {1, 2, 3, 4};
+for(int n: a) {
+   cout &lt;&lt; n &lt;&lt; endl;
+}
+/* output:
+   1
+   2
+   3
+   4
+*/
+</code></pre>
+<h3 id="一点关于栈的题外话"><a href="#一点关于栈的题外话" class="headerlink" title="一点关于栈的题外话"></a>一点关于栈的题外话</h3><pre><code class="cpp">int x = 555;
+int y = 777;
+int a[3] {1, 2, 3};
+cout &lt;&lt; a[-1] &lt;&lt; endl;
+cout &lt;&lt; a[-2] &lt;&lt; endl;
+/* output:
+   777
+   555
+*/
+</code></pre>
+<p>这是为什么呢？<br>因为在栈上x, y, a是连续的，<code>a[-1]/a[-2]</code>本身的意思就是 <strong>从a的起始位置向前移1/2个int的大小</strong></p>
+<pre><code class="cpp">void foo() {
+   int x = 5;
+   int y = 7;
+}
+
+void goo() {
+   int a;
+   int b;
+   cout &lt;&lt; a &lt;&lt; endl;
+   cout &lt;&lt; b &lt;&lt; endl;
+}
+
+int main() {
+   foo();
+   goo();
+   return 0;
+}
+/* output:
+   5
+   7
+*/
+</code></pre>
+<p>这是怎么一回事呢？ 调用完<code>foo()</code>后，<code>x&amp;y</code>就从栈上被<em>擦除</em>掉了，但是<strong>其存储的bits并没有改变</strong>，只是系统将那块内存区域标记为<strong>不再使用</strong>。随后的<code>goo()</code>中的<code>a&amp;b</code>就被放到了先前的这块内存上。由于两者未进行初始化，故<strong>继承</strong>了先前<code>x&amp;y</code>的值。</p>
+<h3 id="Vector-Stack-是如何依赖-Arrays来工作的"><a href="#Vector-Stack-是如何依赖-Arrays来工作的" class="headerlink" title="Vector/Stack 是如何依赖 Arrays来工作的"></a>Vector/Stack 是如何依赖 Arrays来工作的</h3><p>你不能通过类似于<code>.size()</code>or<code>.length()</code>等方法来获取数组的大小。数组本身<strong>只是一块内存，其没有任何功能</strong></p>
+<p>两者都是基于一种被我们称为<code>unfilled array</code>来实现的。也就是其<strong>实际大小</strong>比我们<strong>已经添加</strong>的大一些。</p>
+<p>让我们用<code>Array</code>来实现一下<code>Stack</code></p>
+<pre><code class="cpp">// ArrayStack.h
+
+class ArrayStack {
+   public:
+      ArrayStack();     // constrution
+      ~ArrayStack();    // destrution
+
+      // member functions(method)
+      // TODO: push, pop(peek), isEmpty, operator &lt;&lt;
+      void push(int n);
+      int pop();
+      int peek() const;
+      bool isEmpty() const;
+      friend ostream&amp;  operator &lt;&lt;(ostream&amp; out, const ArrayStack&amp; stack);
+
+   private:
+      //member variables
+      int size;      // 用于记录已添加元素数量
+      int capacity;  // 用于记录总容量
+      int* elements; // 可变性，易于维护
+
+};
+ostream&amp;  operator &lt;&lt;(ostream&amp; out, const ArrayStack&amp; stack);
+</code></pre>
+<pre><code class="cpp">// ArrayStack.cpp
+#include "ArrayStack.h"
+
+ArrayStack::ArrayStack(){
+   size = 0;
+   capacity = 10;
+   elements = new int[capacity]();
+}     
+ArrayStack::~ArrayStack(){
+   delete[] elements;   // 为了区分数组与单个值，需要在delete后面加上[]
+                        // 因为其本质是指针，后台清理指针时，指向一个元素和指向一系列元素的处理方式不同
+}
+// member functions(method)
+ // TODO: push, pop(peek), isEmpty, operator &lt;&lt;
+void ArrayStack::push(int n){
+      if (size &lt; capacity) {
+         elements[size] = n;
+         size++;
+      }else {
+         capacity *= 2;
+         int* newelements = new int[capacity];
+         for (int i = 0; i &lt; size; i++) {
+            newelements[i] = elements[i];
+         }
+         newelements[size] = n;
+         size++;
+         delete[] elements;
+         elements = newelements;
+      }
+}
+int ArrayStack::pop(){
+   
+   if(!isEmpty()) {
+      int a = elements[size - 1];
+      element[size - 1] = 0;     // optional
+      size--;
+      return a;
+   }else {
+      throw "oh sh*t";
+   }
+}
+int ArrayStack::peek() const{
+   if(!isEmpty()) {
+      return elements[size - 1];
+   }else {
+      throw "oh sh*t";
+   }
+}
+bool ArrayStack::isEmpty() const{
+   return size == 0;    // 若为真，返回true
+}
+friend ostream&amp;  operator &lt;&lt;(ostream&amp; out, const ArrayStack&amp; stack){
+   out &lt;&lt; "{";
+   if(!stack.isEmpty()) {
+      out &lt;&lt; stack.elements[0];
+      for (int i = 1; i &lt; stack.size; i++) {
+         out &lt;&lt; "," &lt;&lt; stack.elements[i];
+      }
+   }
+   out &lt;&lt; "}";
+   return out;
+}
+</code></pre>
+<p>在第一次运行时出了问题，问题在于<code>const ArrayStack&amp; stack</code>这种调用方式，默认只能使用<code>ArrayStack</code>中的<code>const</code>函数。于是进行了一些修改。<strong>注意！在.cpp与.h文件中要进行同步的修改</strong></p>
+<p>Q9: 我们对于<code>capacity</code>的大小修改应该遵循怎样的规则呢？<br>A9: 倍数增长(*2常用)。可以确保你越来越不受<strong>扩容</strong>的困扰。</p>
+<h3 id="shallow-copy-bug-浅拷贝错误"><a href="#shallow-copy-bug-浅拷贝错误" class="headerlink" title="shallow copy bug(浅拷贝错误)"></a>shallow copy bug(浅拷贝错误)</h3><pre><code class="cpp">ArrayStack s1;
+s1.push(1);
+s1.push(2);
+s1.push(3);
+
+ArrayStack s2 = s1;
+</code></pre>
+<p>这会造成什么问题呢？一般来说，我们使用<code>=</code>就是将后者的<strong>内存内容</strong>复制到前者去。这里<code>ArrayStack</code>中s<code>ize/capacity</code>都好说，但是<code>elements</code>是<code>int*</code>的形式(复制也只会复制<strong>一个地址</strong>而已)，<strong>两者会共享一个数组</strong>。最后会造成下图的后果⬇️</p>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240203/image.1k3exxguyw68.webp" alt="image"></p>
+<p>如何解决这个问题呢-&gt;Deep Copy(深拷贝)</p>
+<ol>
+<li>可以写一个复制构造函数<code>ArrayStack(const ArrayStack&amp; stack)</code></li>
+<li>可以写一个等号运算符<code>ArrayStack&amp; operator =(const ArrayStack&amp; stack);</code></li>
+</ol>
+<p><strong>Rule of Three</strong>:当你在C++的class中写如下三个的任意一个的时候，你最好把三个都写上</p>
+<ol>
+<li>copy constructor</li>
+<li>assignment operator</li>
+<li>destructor</li>
+</ol>
+<p>或者你也可以直接从源头上断绝这种问题-&gt;<strong>禁止拷贝</strong></p>
+<pre><code class="cpp">// ArrayStack.h
+private:
+   ArrayStack(const ArrayStack&amp; stack);
+   ArrayStack&amp; operator =(const ArrayStack&amp; stack);
+
+// In ArrayStack.cpp, don't give them any actual definition/body.
+</code></pre>
+<h2 id="Graphs-图"><a href="#Graphs-图" class="headerlink" title="Graphs(图)"></a>Graphs(图)</h2><ul>
+<li>一种数据结构，包含如下内容：</li>
+</ul>
+<ol>
+<li>一组顶点(vertexes)，有时也被称为节点(nodes)</li>
+<li>一组边(edges)，顶点之间的连接</li>
+</ol>
+<h3 id="一些关于图的术语"><a href="#一些关于图的术语" class="headerlink" title="一些关于图的术语"></a>一些关于图的术语</h3><ol>
+<li>reachable: Vertex a is <em>reachable</em> from b if a path exists from a to b.</li>
+<li>complete: If every vertex has a direct edge from every other.</li>
+<li>connected: If every vertex can be reachable from every other.</li>
+<li>cycle: A path which starts and ends at the same node.(一般而言，每个edge在一个path中只允许被使用一次)</li>
+<li>loop: A edge directly from a node to itself.(许多图不允许)</li>
+</ol>
+<h3 id="Weighted-Graph-加权图"><a href="#Weighted-Graph-加权图" class="headerlink" title="Weighted Graph(加权图)"></a>Weighted Graph(加权图)</h3><ul>
+<li>给每个边赋予一定的值(权重)</li>
+<li>一般我们认为<strong>权重是非负的</strong></li>
+<li>非加权图可视为：每个边都有相同的权重(0/1/…..)<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240203/image.15aj04p76uyo.webp" alt="image"></li>
+</ul>
+<h3 id="Directed-Graph-digraph-单向图"><a href="#Directed-Graph-digraph-单向图" class="headerlink" title="Directed Graph/digraph(单向图)"></a>Directed Graph/digraph(单向图)</h3><ul>
+<li>每个edge是有方向的(带箭头)</li>
+<li>你也可以混合加权/非加权</li>
+</ul>
+<h3 id="binary-tree-二叉树-Linked-List-链表"><a href="#binary-tree-二叉树-Linked-List-链表" class="headerlink" title="binary tree(二叉树)/Linked List(链表)"></a>binary tree(二叉树)/Linked List(链表)</h3><ul>
+<li>二叉树是一个<strong>有向且无环</strong>的图</li>
+<li>每个节点的最大入度(in-degree, 多少条边指向该节点)为1，最大出度(out-degree, 该节点指向多少个节点)为2。</li>
+<li>链表也是类似的，入度和出度均为1</li>
+</ul>
+<h3 id="Stanford-BasicGraph"><a href="#Stanford-BasicGraph" class="headerlink" title="Stanford BasicGraph"></a>Stanford BasicGraph</h3><p><code>#include "basicgraph.h"</code></p>
+<ul>
+<li>通过这个库构建的图，是<strong>有向加权</strong>的</li>
+<li>nodes默认是strings<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240203/image.72t0sdwwcwhs.webp" alt="image"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>包含的函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g.addEdge(v1, v2);</code></td>
+<td>在两个顶点之间添加一条边</td>
+</tr>
+<tr>
+<td><code>g.addVertex(name);</code></td>
+<td>向图中添加一个顶点</td>
+</tr>
+<tr>
+<td><code>g.clear();</code></td>
+<td>清除图中的所有顶点/边</td>
+</tr>
+<tr>
+<td><code>g.getEdgeSet();</code></td>
+<td>返回所有边的集合</td>
+</tr>
+<tr>
+<td><code>g.getEdgeSet(v);</code></td>
+<td>返回从顶点v出发的所有边的集合</td>
+</tr>
+<tr>
+<td><code>g.getNeighbors(v);</code></td>
+<td>返回顶点v的所有邻居顶点的集合</td>
+</tr>
+<tr>
+<td><code>g.getVertex(name);</code></td>
+<td>返回具有给定名称的顶点</td>
+</tr>
+<tr>
+<td><code>g.getVertexSet();</code></td>
+<td>返回图中所有顶点的集合</td>
+</tr>
+<tr>
+<td><code>g.isNeighbor(v1, v2);</code></td>
+<td>如果顶点v1和v2相邻则返回真（即v1到v2有一条边）</td>
+</tr>
+<tr>
+<td><code>g.isEmpty();</code></td>
+<td>如果图为空（没有顶点或边）则返回真</td>
+</tr>
+<tr>
+<td><code>g.removeEdge(v1, v2);</code></td>
+<td>删除顶点v1和v2之间的边</td>
+</tr>
+<tr>
+<td><code>g.removeVertex(name);</code></td>
+<td>删除具有给定名称的顶点</td>
+</tr>
+<tr>
+<td><code>g.size();</code></td>
+<td>返回图中顶点的数量</td>
+</tr>
+<tr>
+<td><code>g.toString();</code></td>
+<td>返回图的字符串表示，例如 “{a, b, c, a -&gt; b}”</td>
+</tr>
+</tbody></table>
+<h2 id="DFS-BFS"><a href="#DFS-BFS" class="headerlink" title="DFS/BFS"></a>DFS/BFS</h2><h3 id="Depth-first-search-DFS深度优先搜索"><a href="#Depth-first-search-DFS深度优先搜索" class="headerlink" title="Depth-first search(DFS深度优先搜索)"></a>Depth-first search(DFS深度优先搜索)</h3><ul>
+<li>搜索一点到另一点的路径</li>
+<li>尽可能的探索<strong>每一条可能的路径</strong></li>
+<li>没有<strong>选择性</strong>，只是找到，并非最佳/最优路径</li>
+<li>基于<a href="#backtracking">backtracking</a></li>
+</ul>
+<h4 id="DFS伪代码"><a href="#DFS伪代码" class="headerlink" title="DFS伪代码"></a>DFS伪代码</h4><pre><code class="cpp">dfs from v1 to v2:
+   mark v1 as visited, and add it to the path;
+   perform dfs from each of v1's unvisited neighbors n to v2:
+      if dfs(n,v2) succeeds: a path is found!
+   if all neighbors fail: remove v1 from the path;
+</code></pre>
+<h3 id="Breadth-first-search-BFS广度优先搜索"><a href="#Breadth-first-search-BFS广度优先搜索" class="headerlink" title="Breadth-first search(BFS广度优先搜索)"></a>Breadth-first search(BFS广度优先搜索)</h3><ul>
+<li>先直接探索<strong>所有你可以直接到达的临近点</strong></li>
+<li>如果没有到达目的地，那就重复上面的步骤，循环往复，直到到达目的地。</li>
+<li><strong>永远返回最短/最优的路径</strong></li>
+<li>会<strong>消耗更多的时间与空间</strong></li>
+</ul>
+<h4 id="BFS伪代码"><a href="#BFS伪代码" class="headerlink" title="BFS伪代码"></a>BFS伪代码</h4><pre><code class="cpp">bfs from v1 to v2:
+   create a queue of vertexes to visit, initially storing just v1. 
+   mark v1 as visited.
+
+   while queue is not empty and v2 is not seen: 
+      dequeue a vertex v from it,
+      mark that vertex v as visited,
+      and add each unvisited neighbor n of v to the queue.
+</code></pre>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
+<li>基本上与**顶点数(V)和边数(E)**呈线性相关</li>
+<li><strong>O(V + E)</strong></li>
+</ul>
+<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><ul>
+<li>找到<strong>总权重最小(成本最低)的路径</strong></li>
+<li>与<a href="#breadth-first-searchbfs%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">BFS</a>类似，但是其采用了<code>优先级队列(priority queue)</code></li>
+<li>无法处理<strong>负权重</strong>，会打破算法的正常运行。但是权重为0不会有影响。</li>
+<li>在更新<code>pqueue</code>时，只有新cost<strong>低于</strong>当前cost时，才会更新。若相等，则不会更新。</li>
+</ul>
+<h3 id="A-Algorithm"><a href="#A-Algorithm" class="headerlink" title="A* Algorithm"></a>A* Algorithm</h3><ul>
+<li>Dijkstra算法的改进版，基于<a href="#heuristic%E5%90%AF%E5%8F%91%E5%BC%8F">启发式</a>函数</li>
+<li>所需做的改动就是<strong>加入一个启发式估计信息</strong>-&gt;该节点的成本+我估计该节点好坏程度的总和</li>
+<li>从a到c，途径节点b -&gt; priority(b) = cost(a, b) + <strong>Heuristic(b, c)</strong></li>
+<li>我们按照处理后的优先程度，进行探索</li>
+</ul>
+<h4 id="Heuristic-启发式"><a href="#Heuristic-启发式" class="headerlink" title="Heuristic(启发式)"></a>Heuristic(启发式)</h4><ul>
+<li>一种<strong>有预测的，基于目前已有信息的猜测</strong></li>
+<li>指导解决<strong>接下来的问题</strong></li>
+<li>在图的问题中，如果我们能<strong>预估中间点到达目的地时的好坏程度</strong>-&gt;启发式方法</li>
+<li>制定一个<strong>可接受的</strong>启发是非常重要的：因为有时候这个预测可能<strong>过于乐观</strong>，导致实际结果与预测偏差过大</li>
+</ul>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/12/31/20231231-%E4%BF%A1/" title="20231231_信"><span class="has-text-weight-semibold">下一页: 20231231_信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Mostlyharmlessxyz"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Mostly_Hamrless 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
