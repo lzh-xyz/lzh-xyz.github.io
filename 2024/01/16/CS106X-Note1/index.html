@@ -3,38 +3,35 @@
 using namespace name;
 
 其中 namespace就是变量的作用域(scope)
-这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 各自独立。例如我们有很多类似于cout的标识符，如果你需要用cout来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)
-如果你在两个不同的namespace中使用了相同名称的变量、方法或者类的时候，这都是OK的。
-你在代码开头打上using namespace xxx;，这代表你希望获得xxx中所有东西的命名，以及你希望在程序中可以访问其所有内容。
-例如：cout的全称是std::cout，这代表它是一个位于std names.."><meta name="generator" content="Hexo 6.3.0">
+这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 各自独立。例如我们有很多类似于 cout的标识符，如果你需要用 cout来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)
+如果你在两个不同的 namespace中使用了相同名称的变量、方法或者类的时候，这都是OK的。
+你在代码开头打上 using namespace xxx;，这代表你希望获得 xxx中所有东西的命名，以及你希望在程序中可以访问其所有内容。
+例如：cout的全称是 std::cout，这代表它是一个位于 st.."><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets-and-Maps"><span class="toc-text">Sets and Maps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sets"><span class="toc-text">Sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maps"><span class="toc-text">Maps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lexicon"><span class="toc-text">Lexicon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-5"><span class="toc-text">Part 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-text">Recursion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backtracking"><span class="toc-text">backtracking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exhaustive-search"><span class="toc-text">exhaustive search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backtracking-1"><span class="toc-text">backtracking</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-6"><span class="toc-text">Part 6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Structs"><span class="toc-text">Structs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Classes-and-Objects"><span class="toc-text">Classes and Objects</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doubly-Linked-List-Skip-Lists"><span class="toc-text">Doubly Linked List &amp; Skip Lists</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-7"><span class="toc-text">Part 7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-text">Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="toc-text">两种声明方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-each"><span class="toc-text">for-each</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%82%B9%E5%85%B3%E4%BA%8E%E6%A0%88%E7%9A%84%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="toc-text">一点关于栈的题外话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-Stack-%E6%98%AF%E5%A6%82%E4%BD%95%E4%BE%9D%E8%B5%96-Arrays%E6%9D%A5%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-text">Vector&#x2F;Stack 是如何依赖 Arrays来工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shallow-copy-bug-%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%94%99%E8%AF%AF"><span class="toc-text">shallow copy bug(浅拷贝错误)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graphs-%E5%9B%BE"><span class="toc-text">Graphs(图)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%9A%84%E6%9C%AF%E8%AF%AD"><span class="toc-text">一些关于图的术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weighted-Graph-%E5%8A%A0%E6%9D%83%E5%9B%BE"><span class="toc-text">Weighted Graph(加权图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Directed-Graph-digraph-%E5%8D%95%E5%90%91%E5%9B%BE"><span class="toc-text">Directed Graph&#x2F;digraph(单向图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binary-tree-%E4%BA%8C%E5%8F%89%E6%A0%91-Linked-List-%E9%93%BE%E8%A1%A8"><span class="toc-text">binary tree(二叉树)&#x2F;Linked List(链表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stanford-BasicGraph"><span class="toc-text">Stanford BasicGraph</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS-BFS"><span class="toc-text">DFS&#x2F;BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-first-search-DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">Depth-first search(DFS深度优先搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DFS%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">DFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-first-search-BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">Breadth-first search(BFS广度优先搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BFS%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">BFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra%E2%80%99s-Algorithm"><span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Algorithm"><span class="toc-text">A* Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Heuristic-%E5%90%AF%E5%8F%91%E5%BC%8F"><span class="toc-text">Heuristic(启发式)</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">CS106X_Note1</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1"><span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2"><span class="toc-text">Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strings"><span class="toc-text">Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O-Stream"><span class="toc-text">I&#x2F;O Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3"><span class="toc-text">Part3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-aka-list"><span class="toc-text">Vector(aka list)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-insert"><span class="toc-text">Vector insert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Efficiency"><span class="toc-text">Efficiency</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part4"><span class="toc-text">Part4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-data-types-ADTs"><span class="toc-text">Abstract data types (ADTs)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stacks-and-queues"><span class="toc-text">Stacks and queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stacks"><span class="toc-text">Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue"><span class="toc-text">Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets-and-Maps"><span class="toc-text">Sets and Maps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sets"><span class="toc-text">Sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maps"><span class="toc-text">Maps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lexicon"><span class="toc-text">Lexicon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-5"><span class="toc-text">Part 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-text">Recursion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backtracking"><span class="toc-text">backtracking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exhaustive-search"><span class="toc-text">exhaustive search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backtracking-1"><span class="toc-text">backtracking</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-6"><span class="toc-text">Part 6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Structs"><span class="toc-text">Structs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Classes-and-Objects"><span class="toc-text">Classes and Objects</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doubly-Linked-List-Skip-Lists"><span class="toc-text">Doubly Linked List &amp; Skip Lists</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-7"><span class="toc-text">Part 7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-text">Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="toc-text">两种声明方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-each"><span class="toc-text">for-each</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%82%B9%E5%85%B3%E4%BA%8E%E6%A0%88%E7%9A%84%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="toc-text">一点关于栈的题外话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-Stack-%E6%98%AF%E5%A6%82%E4%BD%95%E4%BE%9D%E8%B5%96-Arrays%E6%9D%A5%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-text">Vector&#x2F;Stack 是如何依赖 Arrays来工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shallow-copy-bug-%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%94%99%E8%AF%AF"><span class="toc-text">shallow copy bug(浅拷贝错误)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graphs-%E5%9B%BE"><span class="toc-text">Graphs(图)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%9A%84%E6%9C%AF%E8%AF%AD"><span class="toc-text">一些关于图的术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weighted-Graph-%E5%8A%A0%E6%9D%83%E5%9B%BE"><span class="toc-text">Weighted Graph(加权图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Directed-Graph-digraph-%E5%8D%95%E5%90%91%E5%9B%BE"><span class="toc-text">Directed Graph&#x2F;digraph(单向图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binary-tree-%E4%BA%8C%E5%8F%89%E6%A0%91-Linked-List-%E9%93%BE%E8%A1%A8"><span class="toc-text">binary tree(二叉树)&#x2F;Linked List(链表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stanford-BasicGraph"><span class="toc-text">Stanford BasicGraph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Topological-Sort-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-text">Topological Sort(拓扑排序)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kahn%E2%80%99s-algorithm"><span class="toc-text">Kahn’s algorithm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Revised-algorithm"><span class="toc-text">Revised algorithm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Runtime"><span class="toc-text">Runtime</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">三种图的表示方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Edge-list"><span class="toc-text">Edge list</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Adjacency-list"><span class="toc-text">Adjacency list</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Adjacency-matrix"><span class="toc-text">Adjacency matrix</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS-BFS"><span class="toc-text">DFS&#x2F;BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-first-search-DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">Depth-first search(DFS深度优先搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DFS%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">DFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-first-search-BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">Breadth-first search(BFS广度优先搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BFS%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">BFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra%E2%80%99s-Algorithm"><span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Algorithm"><span class="toc-text">A* Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Heuristic-%E5%90%AF%E5%8F%91%E5%BC%8F"><span class="toc-text">Heuristic(启发式)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spanning-tree-%E7%94%9F%E6%88%90%E6%A0%91%F0%9F%8C%B2"><span class="toc-text">Spanning tree(生成树🌲)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Minimum-spanning-tree-MST%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-text">Minimum spanning tree(MST最小生成树)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kruskal%E2%80%99s-algorithm"><span class="toc-text">Kruskal’s algorithm</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-8"><span class="toc-text">Part 8</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inheritance-%E7%BB%A7%E6%89%BF"><span class="toc-text">Inheritance(继承)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%BA%94%E6%BB%A5%E7%94%A8inheritance%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-text">一些不应滥用inheritance的情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashing-%E5%93%88%E5%B8%8C"><span class="toc-text">Hashing(哈希)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Separating-chaining"><span class="toc-text">Separating chaining</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rehashing"><span class="toc-text">Rehashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Good-hashCode-behavior"><span class="toc-text">Good hashCode behavior</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorting"><span class="toc-text">Sorting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Selection-sort"><span class="toc-text">Selection sort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Insertion-sort"><span class="toc-text">Insertion sort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Merge-sort"><span class="toc-text">Merge sort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quick-sort"><span class="toc-text">Quick sort</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Templates-%E6%A8%A1%E6%9D%BF"><span class="toc-text">Templates(模板)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Template-Class"><span class="toc-text">Template Class</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Template-Library-STL"><span class="toc-text">Standard Template Library(STL)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smart-Pointer"><span class="toc-text">Smart Pointer</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">CS106X_Note1</h1><time class="has-text-grey" datetime="2024-01-16T02:16:21.000Z">2024-01-16</time><article class="mt-2 post-content"><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><p>C++ 的语法和 Java 是大体相似的<br>（岂不是我学完C++可以速通Java了</p>
 <pre><code class="cpp">using namespace name;
 </code></pre>
 <p>其中 <code>namespace</code>就是变量的作用域(scope)</p>
-<p>这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 <strong>各自独立</strong>。<br>例如我们有很多类似于<code>cout</code>的标识符，如果你需要用<code>cout</code>来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)</p>
-<p>如果你在两个不同的<code>namespace</code>中使用了相同名称的变量、方法或者类的时候，这都是OK的。</p>
-<p>你在代码开头打上<code>using namespace xxx;</code>，这代表你希望获得<code>xxx</code>中所有东西的命名，以及你希望在程序中可以访问其所有内容。</p>
-<p>例如：<code>cout</code>的全称是<code>std::cout</code>，这代表它是一个位于<code>std namespace</code>的变量。<br>但是我们一遍遍打 <strong>std::</strong> 有些痛苦，加上<code>using namespace std;</code>，就可以不用在<code>cout</code>的前面加上<code>std::</code>了。</p>
+<p>这种写法的好处就是我们可以让各个文件中相同名字的函数名、变量名、类名 <strong>各自独立</strong>。<br>例如我们有很多类似于 <code>cout</code>的标识符，如果你需要用 <code>cout</code>来打印你的内容，那就代表着你不能将一个变量命名为cout(这样会导致冲突)</p>
+<p>如果你在两个不同的 <code>namespace</code>中使用了相同名称的变量、方法或者类的时候，这都是OK的。</p>
+<p>你在代码开头打上 <code>using namespace xxx;</code>，这代表你希望获得 <code>xxx</code>中所有东西的命名，以及你希望在程序中可以访问其所有内容。</p>
+<p>例如：<code>cout</code>的全称是 <code>std::cout</code>，这代表它是一个位于 <code>std namespace</code>的变量。<br>但是我们一遍遍打 <strong>std::</strong> 有些痛苦，加上 <code>using namespace std;</code>，就可以不用在 <code>cout</code>的前面加上 <code>std::</code>了。</p>
 <hr>
 <p><code>cin</code>是一个糟糕的用法</p>
 <p><code>cin&gt;&gt;(int age)</code>是语法错误，无法编译。</p>
 <p>FUCK，Vscode 无法使用StanfordLib，你妈的。</p>
 <p>cin无法判断用户输入的内容是否匹配对应的类型，所以我们不用。</p>
-<p>我们用<code>simpio.h</code>中的<code>getInteger("prompt")</code>,<code>getReal("prompt")</code>,<code>getLine("prompt")</code>,<code>getYesOrNo("prompt")</code>.</p>
+<p>我们用 <code>simpio.h</code>中的 <code>getInteger("prompt")</code>,<code>getReal("prompt")</code>,<code>getLine("prompt")</code>,<code>getYesOrNo("prompt")</code>.</p>
 <hr>
 <h1 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h1><h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><pre><code class="cpp">double circleArea(double r) {
     return 3.14159265359 * r * r;
 }
 </code></pre>
 <ol>
-<li><p>可以利用函数指针来将一个函数作为参数传入另一个函数，也就是回调(call back)</p>
-</li>
-<li><p>C++对类型转换较为宽容，类似于<code>Java</code>和<code>Python</code>。例如你传入<code>1</code>到<code>circleArea</code>中，会自动转换为<code>1.0</code></p>
-</li>
-<li><p>C++允许默认参数<code>default parameters</code>，这是C++的一个特性，C不具备。它允许你在函数中声明一个具有默认值的参数。如果在调用函数的时候没有为这个参数提供值，它将会自动使用默认值。</p>
-</li>
+<li>可以利用函数指针来将一个函数作为参数传入另一个函数，也就是回调(call back)</li>
+<li>C++对类型转换较为宽容，类似于 <code>Java</code>和 <code>Python</code>。例如你传入 <code>1</code>到 <code>circleArea</code>中，会自动转换为 <code>1.0</code></li>
+<li>C++允许默认参数 <code>default parameters</code>，这是C++的一个特性，C不具备。它允许你在函数中声明一个具有默认值的参数。如果在调用函数的时候没有为这个参数提供值，它将会自动使用默认值。</li>
 </ol>
 <pre><code class="cpp">void printLine(int width = 10, char letter = '*') {
     for (int i = 0; i &lt; width; i++) {
@@ -99,7 +96,7 @@ void song(int times) {
 <ul>
 <li>值语意：当变量(int, double, char)作为参数传入函数时，只会<strong>复制它们的值</strong>，两者是完全独立的</li>
 <li>引用语意：当较为复杂的对象或者数组作为参数传入函数时，会使用引用语意。两者是关联在一起的</li>
-<li>当然，你可以自己选择语意的类型，例如你写一个<code>swap</code>函数。需要注意的是，这里的<code>int&amp; a, int&amp; b</code>的写法和<strong>指针</strong>是不同的：引用更像给<strong>变量起一个别名</strong>，你使用a, b就和使用x, y是一样的，而不是像是指针一样去访问地址。你也不需要用什么*a, *b之类的去<strong>解引用</strong>。你也就不可以将字面值作为一个引用参数传入函数中去</li>
+<li>当然，你可以自己选择语意的类型，例如你写一个 <code>swap</code>函数。需要注意的是，这里的 <code>int&amp; a, int&amp; b</code>的写法和<strong>指针</strong>是不同的：引用更像给<strong>变量起一个别名</strong>，你使用a, b就和使用x, y是一样的，而不是像是指针一样去访问地址。你也不需要用什么*a, *b之类的去<strong>解引用</strong>。你也就不可以将字面值作为一个引用参数传入函数中去</li>
 </ul>
 <pre><code class="cpp">void swap(int&amp; a, int&amp; b) {
    int temp = a;
@@ -110,7 +107,7 @@ void song(int times) {
 swap(x, y);
 </code></pre>
 <ul>
-<li>我们也可以通过引用参数来实现<strong>一次返回多个值</strong>的操作，例如下面：我在<code>datingRange</code>中对min, max做的任何操作，其实都是直接作用在<code>main</code>中的young, old上的。</li>
+<li>我们也可以通过引用参数来实现<strong>一次返回多个值</strong>的操作，例如下面：我在 <code>datingRange</code>中对min, max做的任何操作，其实都是直接作用在 <code>main</code>中的young, old上的。</li>
 </ul>
 <pre><code class="cpp">void datingRange(int age, int&amp; min, int&amp; max) {
    min = age / 2 + 7;
@@ -124,7 +121,7 @@ int main() {
 }
 </code></pre>
 <h2 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h2><p><code>#include &lt;string&gt;</code> &amp; <code>string s = "hello";</code></p>
-<p>C++中的字符串支持运算符<code>Operators</code>，例如：</p>
+<p>C++中的字符串支持运算符 <code>Operators</code>，例如：</p>
 <ul>
 <li>Concatenation串联 +/+=</li>
 </ul>
@@ -132,12 +129,9 @@ int main() {
 s1 += "ty"; // "Marty"
 </code></pre>
 <ul>
-<li><p>Q1:为什么有了<code>+</code>这种操作，在<code>cout</code>中还要用<code>&lt;&lt;</code>呢？</p>
-</li>
-<li><p>A1:因为串联操作<strong>仅支持string+string/char</strong>，对于int、double等类型无效</p>
-</li>
-<li><p>Compare比较 利用 == != &lt; &lt;= &gt; &gt;= 根据ASCII码大小，注意<strong>大写字母的ASCII码小</strong></p>
-</li>
+<li>Q1:为什么有了 <code>+</code>这种操作，在 <code>cout</code>中还要用 <code>&lt;&lt;</code>呢？</li>
+<li>A1:因为串联操作<strong>仅支持string+string/char</strong>，对于int、double等类型无效</li>
+<li>Compare比较 利用 == != &lt; &lt;= &gt; &gt;= 根据ASCII码大小，注意<strong>大写字母的ASCII码小</strong></li>
 </ul>
 <pre><code class="cpp">string s2 = "Cynthia";
 if (s1 &gt; s2 &amp;&amp; s2 != "Joe") { // true
@@ -145,17 +139,15 @@ if (s1 &gt; s2 &amp;&amp; s2 != "Joe") { // true
 }
 </code></pre>
 <ul>
-<li><p>operator overloading操作符重载<br>这是一种C++特有的语言特性，你可以<strong>重新定义操作符，让它们能处理不同的数据类型</strong>。Compare这里就用到了这一特性</p>
-</li>
-<li><p>Mutable可变性</p>
-</li>
+<li>operator overloading操作符重载<br>这是一种C++特有的语言特性，你可以<strong>重新定义操作符，让它们能处理不同的数据类型</strong>。Compare这里就用到了这一特性</li>
+<li>Mutable可变性</li>
 </ul>
 <pre><code class="cpp">s1.append(" Stepp");       //"Marty Stepp"
 s1.erase(3, 2);            //"Mar  Stepp"
 s1[6] = 'o';               //"Mar  Stopp"
 </code></pre>
 <ul>
-<li>Q2:<code>append</code>和<code>+=</code>的区别是?</li>
+<li>Q2:<code>append</code>和 <code>+=</code>的区别是?</li>
 <li>A2:前者是<strong>直接修改原有的string</strong>，后者是<strong>创建了一个新的string</strong>，相比之下，内存方面会有一些差异。</li>
 </ul>
 <hr>
@@ -216,7 +208,7 @@ s1[6] = 'o';               //"Mar  Stopp"
 <td>在字符串 <code>s</code> 的 <code>pos</code> 位置插入字符串 <code>str</code>。</td>
 </tr>
 </tbody></table>
-<p>下面是<code>StanfordLib</code>中<code>strlib.h</code>的函数</p>
+<p>下面是 <code>StanfordLib</code>中 <code>strlib.h</code>的函数</p>
 <table>
 <thead>
 <tr>
@@ -267,14 +259,14 @@ s1[6] = 'o';               //"Mar  Stopp"
 </tbody></table>
 <hr>
 <p>C++中有两种并行的字符串存储处理方式-C(char arrays)/C++(string objects)</p>
-<p>类似于<code>"Hi there"</code>就是<code>C string</code>，当你打出<code>s1 = "xxx"</code>,其实后台默认做了个转换，将<code>C string</code>转换为了<code>C++ string</code>并存储在<code>s1</code>中。</p>
+<p>类似于 <code>"Hi there"</code>就是 <code>C string</code>，当你打出 <code>s1 = "xxx"</code>,其实后台默认做了个转换，将 <code>C string</code>转换为了 <code>C++ string</code>并存储在 <code>s1</code>中。</p>
 <p>一切适用于C++ string的特性都不适用于C string。</p>
 <ul>
 <li>Q3:什么时候会出现Bug呢？</li>
-<li>A3:例如<code>string s2 = "Hi" + "there";</code> 这是一个<code>C-string</code> + <code>C-string</code>,这个bug甚至不会导致编译错误，只是会使你的程序崩溃。因为这里只是在<strong>将地址相加</strong>，并返回一个<strong>不知道在什么地方的地址</strong>。正确的写法应该是**<code>string s2 = string("Hi") + "there";</code>,先将<code>Hi</code>转换为<code>C++-string</code>,再进行处理，就OK了。</li>
+<li>A3:例如 <code>string s2 = "Hi" + "there";</code> 这是一个 <code>C-string</code> + <code>C-string</code>,这个bug甚至不会导致编译错误，只是会使你的程序崩溃。因为这里只是在<strong>将地址相加</strong>，并返回一个<strong>不知道在什么地方的地址</strong>。正确的写法应该是**<code>string s2 = string("Hi") + "there";</code>,先将 <code>Hi</code>转换为 <code>C++-string</code>,再进行处理，就OK了。</li>
 <li>同理，<code>C-string</code> + <code>char/int.....</code>都是不行的</li>
 </ul>
-<h2 id="I-O-Stream"><a href="#I-O-Stream" class="headerlink" title="I/O Stream"></a>I/O Stream</h2><p><code>#include &lt;fstream&gt;</code><br>由于<code>继承</code>的机制，例如：<code>cin</code>-&gt;<code>ifstream</code>,<code>cout</code>-&gt;<code>ofstream</code> </p>
+<h2 id="I-O-Stream"><a href="#I-O-Stream" class="headerlink" title="I/O Stream"></a>I/O Stream</h2><p><code>#include &lt;fstream&gt;</code><br>由于 <code>继承</code>的机制，例如：<code>cin</code>-&gt;<code>ifstream</code>,<code>cout</code>-&gt;<code>ofstream</code></p>
 <p>⬇️<code>ifstream</code></p>
 <table>
 <thead>
@@ -345,10 +337,10 @@ while (!input.fail()) {
    cout &lt;&lt; line &lt;&lt; endl;
 }
 </code></pre>
-<p>问题点在于：<code>getline</code>读取到文件的末尾时，并不会立刻将<code>input</code>的<code>fail</code>状态设置成<code>true</code>，而是先设置<code>eof</code>，当下一次尝试读取时(即读取一个<code>eof</code>状态的文件，才会将他的<code>fail</code>状态更为<code>true</code>)。这就会产生一个问题：最后一次读取<code>input</code>的时候失败了，没有对<code>line</code>进行任何更改，也就导致<em>最后一行输出了两次</em>，随后才会终止while循环 </p>
+<p>问题点在于：<code>getline</code>读取到文件的末尾时，并不会立刻将 <code>input</code>的 <code>fail</code>状态设置成 <code>true</code>，而是先设置 <code>eof</code>，当下一次尝试读取时(即读取一个 <code>eof</code>状态的文件，才会将他的 <code>fail</code>状态更为 <code>true</code>)。这就会产生一个问题：最后一次读取 <code>input</code>的时候失败了，没有对 <code>line</code>进行任何更改，也就导致<em>最后一行输出了两次</em>，随后才会终止while循环</p>
 <hr>
 <p><code>#include &lt;sstream&gt;</code></p>
-<p><code>istringstream</code>可以将一整个<code>string</code>读取进来，然后逐个<code>word</code>进行处理</p>
+<p><code>istringstream</code>可以将一整个 <code>string</code>读取进来，然后逐个 <code>word</code>进行处理</p>
 <pre><code class="cpp">// read specific word tokends from a string
 istringstream input("Jenny Smith 8675309");
 string first, last;
@@ -364,7 +356,7 @@ while (input2 &gt;&gt; word) {
    cout &lt;&lt; word &lt;&lt; endl;
 }
 </code></pre>
-<p><code>ostringstream</code>可以创建一个<code>string</code>的<code>buffer</code>缓冲区，将你的输出存储起来。最后使用<code>str</code>来读取其内容。</p>
+<p><code>ostringstream</code>可以创建一个 <code>string</code>的 <code>buffer</code>缓冲区，将你的输出存储起来。最后使用 <code>str</code>来读取其内容。</p>
 <pre><code class="cpp">ostringstream output;
 int age = 42, iq = 79;
 output &lt;&lt; "My age is " &lt;&lt; age &lt;&lt; endl;
@@ -419,10 +411,10 @@ cout &lt;&lt; result &lt;&lt; endl;
 </tr>
 </tbody></table>
 <hr>
-<h2 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h2><p><code>#include "grid.h"</code><br>一种<code>collection</code>容器-&gt;<strong>存储数据的数据结构</strong>，数据的独立片段则被称为<strong>elements</strong>元素。</p>
+<h2 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h2><p><code>#include "grid.h"</code><br>一种 <code>collection</code>容器-&gt;<strong>存储数据的数据结构</strong>，数据的独立片段则被称为<strong>elements</strong>元素。</p>
 <p><code>Grid</code>是二维数组,**一定要标明元素的数据类型。默认值是0/false(bool)</p>
-<p>需要强调的一点是：<strong>当你想把一个<code>Grid</code>作为参数传入到函数当中去的时候，<code>Copying</code>是很慢的，严重拖慢效率，直接reference(&amp;)引用传递就好</strong></p>
-<p>还需要强调的一点是：<strong>当你不希望你传入的<code>Grid</code>被修改时，请善用<code>const</code></strong></p>
+<p>需要强调的一点是：<strong>当你想把一个 <code>Grid</code>作为参数传入到函数当中去的时候，<code>Copying</code>是很慢的，严重拖慢效率，直接reference(&amp;)引用传递就好</strong></p>
+<p>还需要强调的一点是：<strong>当你不希望你传入的 <code>Grid</code>被修改时，请善用 <code>const</code></strong></p>
 <pre><code class="cpp">// constructing a Grid
 Grid&lt;int&gt; matrix(3, 4);
 martix[0][0] = 75;
@@ -484,7 +476,7 @@ Grid&lt;int&gt; matrix = {
 </tbody></table>
 <hr>
 <h1 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h1><h2 id="Vector-aka-list"><a href="#Vector-aka-list" class="headerlink" title="Vector(aka list)"></a>Vector(aka list)</h2><p><code>#include "vector.h"</code></p>
-<p>依旧是一个<code>collection</code> 容器，负责<strong>从0开始索引存储内容</strong>，一个可以<strong>动态调整大小</strong>的数组。</p>
+<p>依旧是一个 <code>collection</code> 容器，负责<strong>从0开始索引存储内容</strong>，一个可以<strong>动态调整大小</strong>的数组。</p>
 <pre><code class="cpp">// initialize a vector containing 5 integers
 //          index 0  1  2  3  4
 Vector&lt;int&gt; nums {1, 2, 3, 4, 5} //不需要加"="
@@ -495,7 +487,7 @@ names.add("Jay");       //{"Tom", "Jay"}
 names.insert(0, "Liu")  //{"Liu", "Tom", "Jay"}
 </code></pre>
 <ul>
-<li>Q4: 为什么不用<code>Arrays</code>?</li>
+<li>Q4: 为什么不用 <code>Arrays</code>?</li>
 <li>A4: 1. Arrays有着固定的大小，且很难更改其大小。  2. 无法判断访问是否越界，是否会访问到垃圾内存上。  3.没有那些实用的函数</li>
 </ul>
 <p>一些常用的函数如下⬇️</p>
@@ -551,8 +543,8 @@ names.insert(0, "Liu")  //{"Liu", "Tom", "Jay"}
 <td>打印向量中的元素</td>
 </tr>
 </tbody></table>
-<p>C++在<code>c++17</code>后开始有了<strong>模板推断</strong>的特性，也就是你在<code>&lt;&gt;</code>输入为空的话，编译器会<strong>自行判断数据类型</strong></p>
-<p>下面是一个小练习，写一个函数，目的是删除整个<code>vector</code>里所有的<code>string s</code></p>
+<p>C++在 <code>c++17</code>后开始有了<strong>模板推断</strong>的特性，也就是你在 <code>&lt;&gt;</code>输入为空的话，编译器会<strong>自行判断数据类型</strong></p>
+<p>下面是一个小练习，写一个函数，目的是删除整个 <code>vector</code>里所有的 <code>string s</code></p>
 <pre><code class="cpp">void removeAll(Vector&lt;string&gt;&amp; v, string s) {
    for (int i = v.size() - 1; i &gt;= 0; i--) {
       if (v[i] == s) {
@@ -562,11 +554,11 @@ names.insert(0, "Liu")  //{"Liu", "Tom", "Jay"}
 }
 </code></pre>
 <ul>
-<li><strong>注意⚠️！！</strong> <strong>是<code>Vector</code>,V要大写</strong></li>
+<li><strong>注意⚠️！！</strong> <strong>是 <code>Vector</code>,V要大写</strong></li>
 <li>为什么从后往前查找呢？</li>
 </ul>
-<h3 id="Vector-insert"><a href="#Vector-insert" class="headerlink" title="Vector insert"></a>Vector insert</h3><p><code>Vector</code>内部是用<code>Arrays</code>来实现的，那么是如何实现动态容量的呢？</p>
-<p>由于<code>Arrays</code>本身并没有调整大小的功能，所以size总会比我们实际所需的大一些。例如我们创建了一个包含<code>6个int的Vector</code>，那么他的实际大小可能是10/20/30… 但是<strong>这个实际大小确实是固定的</strong>，当我们所需的大小超过了目前的实际大小，那么就会<strong>重新创建</strong>一个实际大小更大的<code>Arrays</code>，<strong>并把原来的数据Copy过去</strong></p>
+<h3 id="Vector-insert"><a href="#Vector-insert" class="headerlink" title="Vector insert"></a>Vector insert</h3><p><code>Vector</code>内部是用 <code>Arrays</code>来实现的，那么是如何实现动态容量的呢？</p>
+<p>由于 <code>Arrays</code>本身并没有调整大小的功能，所以size总会比我们实际所需的大一些。例如我们创建了一个包含 <code>6个int的Vector</code>，那么他的实际大小可能是10/20/30… 但是<strong>这个实际大小确实是固定的</strong>，当我们所需的大小超过了目前的实际大小，那么就会<strong>重新创建</strong>一个实际大小更大的 <code>Arrays</code>，<strong>并把原来的数据Copy过去</strong></p>
 <hr>
 <h2 id="Efficiency"><a href="#Efficiency" class="headerlink" title="Efficiency"></a>Efficiency</h2><p>一种通过代码来判断计算机资源使用情况的方法：通常与<strong>速度(运行时间)/内存(占用空间)<strong>有关，大多数都是</strong>参考运行时间</strong></p>
 <p>为了方便评估，我们有如下假设：</p>
@@ -593,7 +585,7 @@ for (int i = 1; i &lt;= N; i++) {      // runtime = 3N
 </code></pre>
 <p>通常来说我们只关心<strong>影响运行时间的最大因素</strong>，并将<strong>表达式中的参数都忽略掉</strong>。例如上面👆这个例子我们就可以用O(N^2)来概括</p>
 <hr>
-<h1 id="Part4"><a href="#Part4" class="headerlink" title="Part4"></a>Part4</h1><h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><p><code>#include "list.h"</code><br><code>LinkedList</code>提供了和<code>Vector</code>几乎一样的函数。</p>
+<h1 id="Part4"><a href="#Part4" class="headerlink" title="Part4"></a>Part4</h1><h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><p><code>#include "list.h"</code><br><code>LinkedList</code>提供了和 <code>Vector</code>几乎一样的函数。</p>
 <pre><code class="cpp">LinkedList&lt;int&gt; list; // 要声明元素存储类型
 for (int i = 1; i &lt;= 8; i++) {
    list.add(10 * i); // {10, 20, 30, 40, 50, 60, 70, 80}
@@ -601,12 +593,12 @@ for (int i = 1; i &lt;= 8; i++) {
 </code></pre>
 <p>一个笑话：计算机科学家讨厌三件东西,redundancy(冗余),inefficiency(低效)和redundancy(冗余)</p>
 <ul>
-<li>Q5:为什么要在已经有<code>Vector</code>的情况下，还要在设计一个几乎相同的collection <code>LinkedList</code>呢？</li>
-<li>A5:因为两者内部是不同的实现方式，前者是<code>Arrays</code>，后者是<code>Nodes</code></li>
+<li>Q5:为什么要在已经有 <code>Vector</code>的情况下，还要在设计一个几乎相同的collection <code>LinkedList</code>呢？</li>
+<li>A5:因为两者内部是不同的实现方式，前者是 <code>Arrays</code>，后者是 <code>Nodes</code></li>
 </ul>
 <hr>
 <h2 id="Abstract-data-types-ADTs"><a href="#Abstract-data-types-ADTs" class="headerlink" title="Abstract data types (ADTs)"></a>Abstract data types (ADTs)</h2><p>一类<strong>数据类型和操作方法</strong>的集合，主要关注<strong>这个集合能做什么</strong>，而不是<strong>它如何做什么</strong></p>
-<p>我们可以将<code>Vector</code>和<code>LinkedList</code>都归类为<code>list</code>.其他的一些ADTs还有：<code>stack, queue, set, map, graph</code></p>
+<p>我们可以将 <code>Vector</code>和 <code>LinkedList</code>都归类为 <code>list</code>.其他的一些ADTs还有：<code>stack, queue, set, map, graph</code></p>
 <h2 id="Stacks-and-queues"><a href="#Stacks-and-queues" class="headerlink" title="Stacks and queues"></a>Stacks and queues</h2><p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240116/1705372931222.webp" alt="1705372931222"></p>
 <h3 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h3><p><code>#include "stack.h"</code></p>
 <ul>
@@ -662,17 +654,17 @@ cout &lt;&lt; s.pop() &lt;&lt; endl;   // 17  (s is {42, -3})
 cout &lt;&lt; s.peek() &lt;&lt; endl;  // -3  (s is {42, -3})
 cout &lt;&lt; s.pop() &lt;&lt; endl;   // -3  (s is {42})
 </code></pre>
-<p><code>Stack</code>内部是通过<code>Arrays</code>或者<code>Vector</code>实现的</p>
+<p><code>Stack</code>内部是通过 <code>Arrays</code>或者 <code>Vector</code>实现的</p>
 <ul>
 <li>“bottom” = index 0</li>
 <li>“top”    = index (size - 1)   (便于进行操作)</li>
 </ul>
-<p>当然，你也可以用<code>LinkedList</code>来实现</p>
+<p>当然，你也可以用 <code>LinkedList</code>来实现</p>
 <h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p><code>#include "queue.h"</code></p>
 <ul>
 <li>Add to “back” only; remove from “front” only. First-In, First-Out(FIFO)</li>
 <li>元素按照按照插入顺序进行存储，没有index</li>
-<li>只能在队尾<code>add</code>，在前面<code>examine/remove</code></li>
+<li>只能在队尾 <code>add</code>，在前面 <code>examine/remove</code></li>
 <li>基础的一些操作⬇️</li>
 <li><strong>enqueue</strong>: Add an element to the back.</li>
 <li><strong>dequeue</strong>: Remove the front element.</li>
@@ -712,7 +704,7 @@ cout &lt;&lt; s.pop() &lt;&lt; endl;   // -3  (s is {42})
 <td>返回队列中元素的数量</td>
 </tr>
 </tbody></table>
-<p>和<code>Stacks</code>一样，必须将<strong>所有的元素出列</strong>才可以遍历它们。</p>
+<p>和 <code>Stacks</code>一样，必须将<strong>所有的元素出列</strong>才可以遍历它们。</p>
 <pre><code class="cpp">// process (and destory) an entire queue
 while (!q.isEmpty()) {
    do something with q.dequeue();
@@ -744,7 +736,7 @@ for (int i = 0; i &lt; size; i++) {
 <li>包含若干<strong>不重复的</strong>元素。</li>
 <li>没有index，没有顺序，我们也不关系它们的顺序</li>
 <li>有两种实现方式：<code>Set</code> / <code>HashSet</code></li>
-<li><code>Set</code>会将数据存储在一个<strong>二叉树</strong>中。而<code>HashSet</code>则是将数据H<strong>ash化并用Array存储</strong></li>
+<li><code>Set</code>会将数据存储在一个<strong>二叉树</strong>中。而 <code>HashSet</code>则是将数据H<strong>ash化并用Array存储</strong></li>
 <li>同时，<code>Sets</code>也支持<strong>操作符的使用</strong></li>
 </ul>
 <table>
@@ -852,18 +844,18 @@ for (int i = 0; i &lt; size; i++) {
 </tr>
 </tbody></table>
 <ul>
-<li>Q6: 那我们什么时候需要用<code>Sets</code>来解决问题呢？</li>
-<li>A6: 例如：计算一些文本中<strong>有多少种单词</strong>(比如”to”出现了55次，也只算1种) </li>
-<li>Q7: 什么时候用<code>Set</code>，什么时候用<code>HashSet</code>呢？</li>
+<li>Q6: 那我们什么时候需要用 <code>Sets</code>来解决问题呢？</li>
+<li>A6: 例如：计算一些文本中<strong>有多少种单词</strong>(比如”to”出现了55次，也只算1种)</li>
+<li>Q7: 什么时候用 <code>Set</code>，什么时候用 <code>HashSet</code>呢？</li>
 <li>A7: 需要<strong>有序</strong>时，用前者；否则用后者以获得更快性能。</li>
 </ul>
-<h3 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h3><p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240116/1705415408686.jpg" alt="1705415408686"><br><code>#include "map.h"</code>; <code>#include "hashmap.h"</code>; </p>
+<h3 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h3><p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240116/1705415408686.jpg" alt="1705415408686"><br><code>#include "map.h"</code>; <code>#include "hashmap.h"</code>;</p>
 <pre><code class="cpp">Map&lt;string, int&gt; votes // maps from string keys to integer values
 </code></pre>
 <ul>
 <li>一种用来存储<strong>一对数据</strong>的collection, (key, value)。<code>key</code>相当于是<strong>索引</strong>，<code>value</code>是<strong>具体的值</strong></li>
-<li>同样的，我们也有两种的<code>Maps</code>类型：<code>Map</code> / <code>HashMap</code></li>
-<li>其内部原理和<code>Sets</code>几乎相同，<code>Map</code>用<strong>二叉树存储</strong>，而<code>HashMap</code>存储<strong>Hash化后的数据</strong>，利弊也是类似的</li>
+<li>同样的，我们也有两种的 <code>Maps</code>类型：<code>Map</code> / <code>HashMap</code></li>
+<li>其内部原理和 <code>Sets</code>几乎相同，<code>Map</code>用<strong>二叉树存储</strong>，而 <code>HashMap</code>存储<strong>Hash化后的数据</strong>，利弊也是类似的</li>
 <li>基础的一些操作⬇️</li>
 <li><strong>m.put(key, value)</strong>: Add a key/value pair to the map.</li>
 <li><strong>m.get(key)</strong>:        Returns the value paired with the given key.(return a default value if the key is not found)</li>
@@ -947,8 +939,8 @@ for (int i = 0; i &lt; size; i++) {
 </tbody></table>
 <h3 id="Lexicon"><a href="#Lexicon" class="headerlink" title="Lexicon"></a>Lexicon</h3><p><code>#include "lexicon.h"</code></p>
 <ul>
-<li>有和<code>Sets</code>一样的方法和接口，就是一个<strong>大字典</strong></li>
-<li>默认就是存储<code>String</code>, 按<code>字典序</code>排列</li>
+<li>有和 <code>Sets</code>一样的方法和接口，就是一个<strong>大字典</strong></li>
+<li>默认就是存储 <code>String</code>, 按 <code>字典序</code>排列</li>
 </ul>
 <table>
 <thead>
@@ -1021,12 +1013,9 @@ for (int i = 0; i &lt; size; i++) {
 </tbody></table>
 <h1 id="Part-5"><a href="#Part-5" class="headerlink" title="Part 5"></a>Part 5</h1><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p><strong>self—similar</strong></p>
 <ul>
-<li><p>这描述了一种<strong>自己运行时调用自己</strong>的算法或处理方式</p>
-</li>
-<li><p>What is recursive programming?</p>
-</li>
-<li><p>Writting a function that calls itself.</p>
-</li>
+<li>这描述了一种<strong>自己运行时调用自己</strong>的算法或处理方式</li>
+<li>What is recursive programming?</li>
+<li>Writting a function that calls itself.</li>
 </ul>
 <p>eg: Factorial(N)</p>
 <pre><code class="cpp">int fact(int n){
@@ -1040,28 +1029,19 @@ for (int i = 0; i &lt; size; i++) {
 }
 </code></pre>
 <ul>
-<li><p>recursion &amp; iteration</p>
-</li>
-<li><p>其实recursion在效率上是<strong>远远不如iteration</strong>的，尤其当其调用过多后，很有可能会造成<strong>stack overflow</strong>。很多问题也不适合利用recursion来解决。</p>
-</li>
-<li><p>Q8: 什么类型的问题或者算法适合用recursion来解决呢？</p>
-</li>
-<li><p>A8: 有<code>self-similar</code>(自相似)特性的算法。=&gt; 我怎么描述这个算法使得其能<strong>被一个更小更相似的版本</strong>来刻画</p>
-</li>
-<li><p><strong>base case</strong> : 最简单的情况，直接给出答案</p>
-</li>
-<li><p><strong>recursive case</strong> : 一些无法被直接回答的情况。但是你可以通过其他<strong>更小的更简单的</strong>情况来刻画它</p>
-</li>
+<li>recursion &amp; iteration</li>
+<li>其实recursion在效率上是<strong>远远不如iteration</strong>的，尤其当其调用过多后，很有可能会造成<strong>stack overflow</strong>。很多问题也不适合利用recursion来解决。</li>
+<li>Q8: 什么类型的问题或者算法适合用recursion来解决呢？</li>
+<li>A8: 有 <code>self-similar</code>(自相似)特性的算法。=&gt; 我怎么描述这个算法使得其能<strong>被一个更小更相似的版本</strong>来刻画</li>
+<li><strong>base case</strong> : 最简单的情况，直接给出答案</li>
+<li><strong>recursive case</strong> : 一些无法被直接回答的情况。但是你可以通过其他<strong>更小的更简单的</strong>情况来刻画它</li>
 </ul>
 <h2 id="backtracking"><a href="#backtracking" class="headerlink" title="backtracking"></a>backtracking</h2><p>回溯</p>
-<p>这是一种采取recursion来解决**涉及对(true)错(false)**的问题的特定方法。<br>如果你遇到了false，那就通过backtracking来寻找争取的路。<br>我们先从<code>exhaustive search</code>(穷举搜索)开始。backtracking作为其一种形式</p>
+<p>这是一种采取recursion来解决 <strong>涉及对(true)错(false)</strong> 的问题的特定方法。<br>如果你遇到了false，那就通过backtracking来寻找争取的路。<br>我们先从 <code>exhaustive search</code>(穷举搜索)开始。backtracking作为其一种形式</p>
 <h3 id="exhaustive-search"><a href="#exhaustive-search" class="headerlink" title="exhaustive search"></a>exhaustive search</h3><ul>
-<li><p>尝试每一种可能的组合</p>
-</li>
-<li><p>搜索空间经常包含许多<code>选择</code>，每一种选择都有很多的<code>可选项</code>。</p>
-</li>
-<li><p>什么时候我们可能会用到穷举搜索呢？ 例如：<strong>搜索目录树结构</strong>、<strong>对一组数值进行排列或搜索的情况</strong>(-&gt;逻辑组合、组合数学、名称、密码……)</p>
-</li>
+<li>尝试每一种可能的组合</li>
+<li>搜索空间经常包含许多 <code>选择</code>，每一种选择都有很多的 <code>可选项</code>。</li>
+<li>什么时候我们可能会用到穷举搜索呢？ 例如：<strong>搜索目录树结构</strong>、<strong>对一组数值进行排列或搜索的情况</strong>(-&gt;逻辑组合、组合数学、名称、密码……)</li>
 </ul>
 <hr>
 <ul>
@@ -1075,7 +1055,7 @@ for (int i = 0; i &lt; size; i++) {
       - Search the remaining decisions that could follow C.
  - Otherwise, if there are no more decisions to make: Stop.
 </code></pre>
-<p>这里的<code>base case</code>不再代表<strong>一种简单普通的情况</strong>，而是代表<strong>走到头了</strong>，<strong>我这个stack已经堆到要求的高度了</strong>，没什么可以接着选了。</p>
+<p>这里的 <code>base case</code>不再代表<strong>一种简单普通的情况</strong>，而是代表<strong>走到头了</strong>，<strong>我这个stack已经堆到要求的高度了</strong>，没什么可以接着选了。</p>
 <hr>
 <p>例子：printBinary 打印指定位数的所有二进制数.</p>
 <pre><code class="cpp">void printBinary (int digits, string prefix = "") {
@@ -1122,14 +1102,10 @@ for (int i = 0; i &lt; size; i++) {
 </code></pre>
 <h3 id="backtracking-1"><a href="#backtracking-1" class="headerlink" title="backtracking"></a>backtracking</h3><p>回溯法是<strong>穷尽搜索</strong>和<strong>筛选</strong>相结合的一种方法，它在探索解空间的时候，加入了<em>过滤</em>的思想。这样我们就可以<strong>找到问题的最优解或者满足特定条件的解决方案</strong></p>
 <ul>
-<li><p>这是一种暴力技巧，它会检查所有的可能性(至少确保考虑了所有情况)</p>
-</li>
-<li><p>同时，由于这类算法和策略通常具有<strong>自相似性</strong>，通过递归来实现解决方案通常会<strong>更加直观和易于理解</strong></p>
-</li>
-<li><p>-&gt; 递归能够更自然的表达问题与解决方案之间的关系，使代码更易读以及可维护</p>
-</li>
-<li><p>backtracking的伪代码：</p>
-</li>
+<li>这是一种暴力技巧，它会检查所有的可能性(至少确保考虑了所有情况)</li>
+<li>同时，由于这类算法和策略通常具有<strong>自相似性</strong>，通过递归来实现解决方案通常会<strong>更加直观和易于理解</strong></li>
+<li>-&gt; 递归能够更自然的表达问题与解决方案之间的关系，使代码更易读以及可维护</li>
+<li>backtracking的伪代码：</li>
 </ul>
 <pre><code class="cpp">function Search(decisions):
  - If there are decisions left to make:
@@ -1160,9 +1136,9 @@ today.day = 23;
 Date xmas = {12, 25}; // 按顺序来实现初始化+赋值
 </code></pre>
 <p>当然，你也可以在里面写一些<strong>你定义的函数</strong>，在这些函数里，你可以<strong>直接 使用结构体里的变量</strong></p>
-<pre><code class="cpp">struct Date {     
+<pre><code class="cpp">struct Date {   
    int month;
-   int day;       
+   int day;     
 
    int daysInMonth() { 
       if (month == 9 || month == 4
@@ -1180,12 +1156,9 @@ Date xmas = {12, 25}; // 按顺序来实现初始化+赋值
 </code></pre>
 <p>结构体里的东西默认是公开的(public)，意味着你可以直接访问它并查看其变量的值。<br>而对于类来说，里面的东西默认是私有的(private)，意味着当你想直接访问/修改里面的变量，编译器会报错：你没有这个权限</p>
 <ul>
-<li><p>空指针：本身的所处内存并不是NULL，而是其指向的是NULL。nullptr就像宇宙中的无边黑暗</p>
-</li>
-<li><p>垃圾指针：没有进行初始化，故其指向某个随机地方的指针。也就是随机<strong>生成</strong>一个地址数字存储起来，这个内存中可能存储着<strong>你绝不可以碰触的数字</strong></p>
-</li>
-<li><p>-&gt; 所以我们<strong>声明一个新指针时</strong>，务必要<strong>为其赋予初值</strong></p>
-</li>
+<li>空指针：本身的所处内存并不是NULL，而是其指向的是NULL。nullptr就像宇宙中的无边黑暗</li>
+<li>垃圾指针：没有进行初始化，故其指向某个随机地方的指针。也就是随机<strong>生成</strong>一个地址数字存储起来，这个内存中可能存储着<strong>你绝不可以碰触的数字</strong></li>
+<li>-&gt; 所以我们<strong>声明一个新指针时</strong>，务必要<strong>为其赋予初值</strong></li>
 </ul>
 <pre><code class="cpp">int* p = nullptr;
 if(p)....         // false p是否不为nullptr
@@ -1194,7 +1167,7 @@ if(!p)...         // true p是否为nullptr
 <p><code>type* name = new type(parameters);</code></p>
 <p><strong>运行中的程序</strong>是将所有的变量存储在一个 <strong>栈(stack)</strong> 中</p>
 <p>当一个函数完成其任务，所有的局部变量的使命也就完成了。我们就会将这些变量占用的内存空间回收，用于存放新的数据。从技术来讲，当这些变量消失的时候，实际上就是<strong>栈被压缩了</strong></p>
-<p>还有另外一块存储空间 - <strong>堆(heap)<strong>。<br>当你使用<code>new</code>语句来申请空间时，就会在heap里申请一块空间，并返回一个指针。<br>并且这块内存并不会随着某个函数的运行结束而被</strong>自动释放</strong>，只会被手动<strong>free up</strong></p>
+<p>还有另外一块存储空间 - <strong>堆(heap)<strong>。<br>当你使用 <code>new</code>语句来申请空间时，就会在heap里申请一块空间，并返回一个指针。<br>并且这块内存并不会随着某个函数的运行结束而被</strong>自动释放</strong>，只会被手动<strong>free up</strong></p>
 <p>从整体来看，内存中存储变量是连续的，但两者在<strong>生命周期上是完全无关的</strong>。故我们将这两块区域视为<strong>相对独立</strong>的。<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240129/image.6361ak1emao0.webp" alt="image"></p>
 <pre><code class="cpp">struct ListNode {
    int data;
@@ -1263,16 +1236,16 @@ void remove(ListNode*&amp; front, int index) {
 <h2 id="Classes-and-Objects"><a href="#Classes-and-Objects" class="headerlink" title="Classes and Objects"></a>Classes and Objects</h2><ul>
 <li>Class: 一种数据对象的模板，定义了属于这种类型的内容，包括其存储的数据和行为</li>
 <li>数据 -&gt; <strong>成员变量</strong>(存储在对象内部的变量)</li>
-<li>对象内部的函数和行为 -&gt; <strong>成员函数/方法</strong> </li>
+<li>对象内部的函数和行为 -&gt; <strong>成员函数/方法</strong></li>
 <li><strong>构造函数</strong> 可以在对象被创建、被初始化时设置对象的状态</li>
 </ul>
 <p>面向对象编程(OOP)的思想：你的<strong>大部分代码都与对象有关</strong>，这些对象执行任务，并与其他对象相互协作。</p>
 <p>提供了抽象(abstraction)的概念: 我并不需要知道其内部的运行原理，我只需要知道<strong>如何去使用它</strong></p>
 <ul>
-<li>C++中的类被分成了两种代码文件: </li>
+<li>C++中的类被分成了两种代码文件:</li>
 <li>.h: 头文件，负责<strong>声明</strong>(declarations)</li>
 <li>.cpp: 源文件，负责<strong>定义</strong>(method bodies)写清楚具体的实现方式</li>
-<li>例如你想写一个名为<code>Foo</code>的class，就要有<code>Foo.h &amp; Foo.cpp</code></li>
+<li>例如你想写一个名为 <code>Foo</code>的class，就要有 <code>Foo.h &amp; Foo.cpp</code></li>
 <li>好处在于：别人只需要看你的头文件即可知道你所定义的方法和参数，而不需要关心位于源文件的具体实现方式。</li>
 </ul>
 <hr>
@@ -1295,7 +1268,7 @@ private:
 }; // IMPORTANT: must put a semicolon at end of class declaration(argh)
 #endif
 </code></pre>
-<p>通过<code>const</code>用法，你可以使得一些东西不会被改变</p>
+<p>通过 <code>const</code>用法，你可以使得一些东西不会被改变</p>
 <pre><code class="cpp">const int x = 4;
 
 void foo(const BankAccount&amp; ba){
@@ -1309,13 +1282,13 @@ class BankAccount {
 </code></pre>
 <hr>
 <p>操作符重载(Operator overloading)</p>
-<p>unary(一元) + - ++ – * &amp; ! ~ new delete<br>binary(二元) + - * / % += -= *= /= %= &amp; | &amp;&amp; || ^ == != &lt; &gt; &lt;= &gt;= = [ ] -&gt; ( ) </p>
+<p>unary(一元) + - ++ – * &amp; ! ~ new delete<br>binary(二元) + - * / % += -= *= /= %= &amp; | &amp;&amp; || ^ == != &lt; &gt; &lt;= &gt;= = [ ] -&gt; ( )</p>
 <pre><code class="cpp">returnType operator op(parameters);    //.h
 returnType operator op(parameters) {   //.cpp
    statements;
 }
 </code></pre>
-<p>在C++中有一个比较有趣的玩法，可以<strong>让某些函数/方法访问到private内的数据</strong>，就是在前面加上<code>friend</code>关键字</p>
+<p>在C++中有一个比较有趣的玩法，可以<strong>让某些函数/方法访问到private内的数据</strong>，就是在前面加上 <code>friend</code>关键字</p>
 <hr>
 <p><strong>Destructor 析构函数</strong></p>
 <p>如果你的对象中涉及到了指针或者在堆中创建的新对象，那在析构函数中释放他们就很有必要了-&gt;避免内存泄漏。</p>
@@ -1323,10 +1296,8 @@ returnType operator op(parameters) {   //.cpp
 ClassName::~ClassName() {···}   // ClassName.cpp
 </code></pre>
 <h2 id="Doubly-Linked-List-Skip-Lists"><a href="#Doubly-Linked-List-Skip-Lists" class="headerlink" title="Doubly Linked List &amp; Skip Lists"></a>Doubly Linked List &amp; Skip Lists</h2><ul>
-<li><p>Doubly Linked List: 每个节点都有<code>prev</code>和<code>next</code>两个指针。同时我们要维护两个指针<code>front</code>和<code>back</code>，一头一尾，这样我们就可以双向遍历Lists。缺点就是会占用更多的内存，以及维护和修改起来更为困难</p>
-</li>
-<li><p>Skip List: 有序的List。每个节点包含存储<code>next</code>指针的<code>vector</code>/<code>array</code>。使得查找、增加或者删除元素的时间复杂度都可以达到O(logN)<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.457bredn5h34.webp" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.4esn1dyqplz4.webp" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.4rsxngc83ekg.webp" alt="image"></p>
-</li>
+<li>Doubly Linked List: 每个节点都有 <code>prev</code>和 <code>next</code>两个指针。同时我们要维护两个指针 <code>front</code>和 <code>back</code>，一头一尾，这样我们就可以双向遍历Lists。缺点就是会占用更多的内存，以及维护和修改起来更为困难</li>
+<li>Skip List: 有序的List。每个节点包含存储 <code>next</code>指针的 <code>vector</code>/<code>array</code>。使得查找、增加或者删除元素的时间复杂度都可以达到O(logN)<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.457bredn5h34.webp" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.4esn1dyqplz4.webp" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240130/image.4rsxngc83ekg.webp" alt="image"></li>
 </ul>
 <hr>
 <h1 id="Part-7"><a href="#Part-7" class="headerlink" title="Part 7"></a>Part 7</h1><h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h3 id="两种声明方式"><a href="#两种声明方式" class="headerlink" title="两种声明方式"></a>两种声明方式</h3><ol>
@@ -1350,7 +1321,7 @@ ClassName::~ClassName() {···}   // ClassName.cpp
 <pre><code class="cpp">type name[length] {};            // initialize to 0
 </code></pre>
 <p>第二种写法更类似于一种trick</p>
-<h3 id="for-each"><a href="#for-each" class="headerlink" title="for-each"></a>for-each</h3><p>数组本身也是支持<code>for-each</code>循环的。</p>
+<h3 id="for-each"><a href="#for-each" class="headerlink" title="for-each"></a>for-each</h3><p>数组本身也是支持 <code>for-each</code>循环的。</p>
 <pre><code class="cpp">int a[4] {1, 2, 3, 4};
 for(int n: a) {
    cout &lt;&lt; n &lt;&lt; endl;
@@ -1395,10 +1366,10 @@ int main() {
    7
 */
 </code></pre>
-<p>这是怎么一回事呢？ 调用完<code>foo()</code>后，<code>x&amp;y</code>就从栈上被<em>擦除</em>掉了，但是<strong>其存储的bits并没有改变</strong>，只是系统将那块内存区域标记为<strong>不再使用</strong>。随后的<code>goo()</code>中的<code>a&amp;b</code>就被放到了先前的这块内存上。由于两者未进行初始化，故<strong>继承</strong>了先前<code>x&amp;y</code>的值。</p>
-<h3 id="Vector-Stack-是如何依赖-Arrays来工作的"><a href="#Vector-Stack-是如何依赖-Arrays来工作的" class="headerlink" title="Vector/Stack 是如何依赖 Arrays来工作的"></a>Vector/Stack 是如何依赖 Arrays来工作的</h3><p>你不能通过类似于<code>.size()</code>or<code>.length()</code>等方法来获取数组的大小。数组本身<strong>只是一块内存，其没有任何功能</strong></p>
-<p>两者都是基于一种被我们称为<code>unfilled array</code>来实现的。也就是其<strong>实际大小</strong>比我们<strong>已经添加</strong>的大一些。</p>
-<p>让我们用<code>Array</code>来实现一下<code>Stack</code></p>
+<p>这是怎么一回事呢？ 调用完 <code>foo()</code>后，<code>x&amp;y</code>就从栈上被<em>擦除</em>掉了，但是<strong>其存储的bits并没有改变</strong>，只是系统将那块内存区域标记为<strong>不再使用</strong>。随后的 <code>goo()</code>中的 <code>a&amp;b</code>就被放到了先前的这块内存上。由于两者未进行初始化，故<strong>继承</strong>了先前 <code>x&amp;y</code>的值。</p>
+<h3 id="Vector-Stack-是如何依赖-Arrays来工作的"><a href="#Vector-Stack-是如何依赖-Arrays来工作的" class="headerlink" title="Vector/Stack 是如何依赖 Arrays来工作的"></a>Vector/Stack 是如何依赖 Arrays来工作的</h3><p>你不能通过类似于 <code>.size()</code>or <code>.length()</code>等方法来获取数组的大小。数组本身<strong>只是一块内存，其没有任何功能</strong></p>
+<p>两者都是基于一种被我们称为 <code>unfilled array</code>来实现的。也就是其<strong>实际大小</strong>比我们<strong>已经添加</strong>的大一些。</p>
+<p>让我们用 <code>Array</code>来实现一下 <code>Stack</code></p>
 <pre><code class="cpp">// ArrayStack.h
 
 class ArrayStack {
@@ -1430,7 +1401,7 @@ ArrayStack::ArrayStack(){
    size = 0;
    capacity = 10;
    elements = new int[capacity]();
-}     
+}   
 ArrayStack::~ArrayStack(){
    delete[] elements;   // 为了区分数组与单个值，需要在delete后面加上[]
                         // 因为其本质是指针，后台清理指针时，指向一个元素和指向一系列元素的处理方式不同
@@ -1486,8 +1457,8 @@ friend ostream&amp;  operator &lt;&lt;(ostream&amp; out, const ArrayStack&amp; s
    return out;
 }
 </code></pre>
-<p>在第一次运行时出了问题，问题在于<code>const ArrayStack&amp; stack</code>这种调用方式，默认只能使用<code>ArrayStack</code>中的<code>const</code>函数。于是进行了一些修改。<strong>注意！在.cpp与.h文件中要进行同步的修改</strong></p>
-<p>Q9: 我们对于<code>capacity</code>的大小修改应该遵循怎样的规则呢？<br>A9: 倍数增长(*2常用)。可以确保你越来越不受<strong>扩容</strong>的困扰。</p>
+<p>在第一次运行时出了问题，问题在于 <code>const ArrayStack&amp; stack</code>这种调用方式，默认只能使用 <code>ArrayStack</code>中的 <code>const</code>函数。于是进行了一些修改。<strong>注意！在.cpp与.h文件中要进行同步的修改</strong></p>
+<p>Q9: 我们对于 <code>capacity</code>的大小修改应该遵循怎样的规则呢？<br>A9: 倍数增长(*2常用)。可以确保你越来越不受<strong>扩容</strong>的困扰。</p>
 <h3 id="shallow-copy-bug-浅拷贝错误"><a href="#shallow-copy-bug-浅拷贝错误" class="headerlink" title="shallow copy bug(浅拷贝错误)"></a>shallow copy bug(浅拷贝错误)</h3><pre><code class="cpp">ArrayStack s1;
 s1.push(1);
 s1.push(2);
@@ -1495,12 +1466,12 @@ s1.push(3);
 
 ArrayStack s2 = s1;
 </code></pre>
-<p>这会造成什么问题呢？一般来说，我们使用<code>=</code>就是将后者的<strong>内存内容</strong>复制到前者去。这里<code>ArrayStack</code>中s<code>ize/capacity</code>都好说，但是<code>elements</code>是<code>int*</code>的形式(复制也只会复制<strong>一个地址</strong>而已)，<strong>两者会共享一个数组</strong>。最后会造成下图的后果⬇️</p>
+<p>这会造成什么问题呢？一般来说，我们使用 <code>=</code>就是将后者的<strong>内存内容</strong>复制到前者去。这里 <code>ArrayStack</code>中s <code>ize/capacity</code>都好说，但是 <code>elements</code>是 <code>int*</code>的形式(复制也只会复制<strong>一个地址</strong>而已)，<strong>两者会共享一个数组</strong>。最后会造成下图的后果⬇️</p>
 <p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240203/image.1k3exxguyw68.webp" alt="image"></p>
 <p>如何解决这个问题呢-&gt;Deep Copy(深拷贝)</p>
 <ol>
-<li>可以写一个复制构造函数<code>ArrayStack(const ArrayStack&amp; stack)</code></li>
-<li>可以写一个等号运算符<code>ArrayStack&amp; operator =(const ArrayStack&amp; stack);</code></li>
+<li>可以写一个复制构造函数 <code>ArrayStack(const ArrayStack&amp; stack)</code></li>
+<li>可以写一个等号运算符 <code>ArrayStack&amp; operator =(const ArrayStack&amp; stack);</code></li>
 </ol>
 <p><strong>Rule of Three</strong>:当你在C++的class中写如下三个的任意一个的时候，你最好把三个都写上</p>
 <ol>
@@ -1613,6 +1584,64 @@ private:
 <td>返回图的字符串表示，例如 “{a, b, c, a -&gt; b}”</td>
 </tr>
 </tbody></table>
+<h3 id="Topological-Sort-拓扑排序"><a href="#Topological-Sort-拓扑排序" class="headerlink" title="Topological Sort(拓扑排序)"></a>Topological Sort(拓扑排序)</h3><ul>
+<li>用于处理<strong>依赖</strong>关系</li>
+<li>假设有一个DAG(有向无环图)</li>
+<li>为各顶点排序，确保：<strong>如果存在A到B的边，那么A就应该在B之前</strong>。</li>
+<li>排序的结果可能<strong>不唯一</strong></li>
+</ul>
+<h4 id="Kahn’s-algorithm"><a href="#Kahn’s-algorithm" class="headerlink" title="Kahn’s algorithm"></a>Kahn’s algorithm</h4><ul>
+<li>ordering uses a list or vector</li>
+<li>ordering:= {}</li>
+<li>Repeat until graph is empty:<ul>
+<li>Find a vertex v with in-degree of 0 (no incoming edges)<ul>
+<li>if ther is no such vertex, the graph cannot be sorted; stop.</li>
+</ul>
+</li>
+<li>Delete v and all of its outgoing edges from the graph.</li>
+<li>ordering += v.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Revised-algorithm"><a href="#Revised-algorithm" class="headerlink" title="Revised algorithm"></a>Revised algorithm</h4><ul>
+<li>我们不希望破坏整个图来实现排序</li>
+<li>map := {each vertex -&gt; its in-degree}</li>
+<li>queue := {all vertices with in-degree  = 0}.</li>
+<li>ordering := {}</li>
+<li>Repeat until queue is empty:<ul>
+<li>Dequeue the first vertex v from the queue</li>
+<li>ordering += v.</li>
+<li>Decrease the in-degree of all v’s neighbors by 1 in the map.</li>
+<li>queue += {any neighbors whose in-degree is now 0}</li>
+</ul>
+</li>
+<li>If all vertices are processed, success.Otherwise, there is a cycle.</li>
+</ul>
+<h4 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h4><p>O(V + E)<br>基本与 顶点数和边数成 线性相关</p>
+<h3 id="三种图的表示方式"><a href="#三种图的表示方式" class="headerlink" title="三种图的表示方式"></a>三种图的表示方式</h3><h4 id="Edge-list"><a href="#Edge-list" class="headerlink" title="Edge list"></a>Edge list</h4><ul>
+<li>利用 list、vector或数组来存储所有的edges(unordered)</li>
+<li>每个edge存储起始&amp;终止的vertex</li>
+<li>vertex本身并不直接进行存储，只存在于edge的数据中</li>
+<li>优势<ul>
+<li>找到<strong>每个vertex的in-degree</strong> O(E)</li>
+<li>可遍历所有边</li>
+<li>添加边很方便</li>
+</ul>
+</li>
+</ul>
+<h4 id="Adjacency-list"><a href="#Adjacency-list" class="headerlink" title="Adjacency list"></a>Adjacency list</h4><ul>
+<li>利用linked list,Vector,Set…..存储每个vertex的neighbors</li>
+<li>非常适合<strong>获得每个vertex的度</strong></li>
+<li><strong>增删vertex极其麻烦</strong></li>
+<li><strong>无法方便的获取每个vertex的入边</strong></li>
+</ul>
+<h4 id="Adjacency-matrix"><a href="#Adjacency-matrix" class="headerlink" title="Adjacency matrix"></a>Adjacency matrix</h4><ul>
+<li>一个N*N的矩阵，类似于<a href="#grid">Grid</a></li>
+<li>a[i, j] -&gt; i与j之间是否有一条edge</li>
+<li>有向图：i-&gt;start; j-&gt;end</li>
+<li>无向图：a[i, j] = a[j, i]</li>
+<li>几乎没什么缺点，全是优点<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240205/image.639a9o85mrgg.png" alt="image"></li>
+</ul>
 <h2 id="DFS-BFS"><a href="#DFS-BFS" class="headerlink" title="DFS/BFS"></a>DFS/BFS</h2><h3 id="Depth-first-search-DFS深度优先搜索"><a href="#Depth-first-search-DFS深度优先搜索" class="headerlink" title="Depth-first search(DFS深度优先搜索)"></a>Depth-first search(DFS深度优先搜索)</h3><ul>
 <li>搜索一点到另一点的路径</li>
 <li>尽可能的探索<strong>每一条可能的路径</strong></li>
@@ -1646,20 +1675,330 @@ private:
 </ul>
 <h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><ul>
 <li>找到<strong>总权重最小(成本最低)的路径</strong></li>
-<li>与<a href="#breadth-first-searchbfs%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">BFS</a>类似，但是其采用了<code>优先级队列(priority queue)</code></li>
+<li>与<a href="#breadth-first-searchbfs%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">BFS</a>类似，但是其采用了 <code>优先级队列(priority queue)</code></li>
 <li>无法处理<strong>负权重</strong>，会打破算法的正常运行。但是权重为0不会有影响。</li>
-<li>在更新<code>pqueue</code>时，只有新cost<strong>低于</strong>当前cost时，才会更新。若相等，则不会更新。</li>
+<li>在更新 <code>pqueue</code>时，只有新cost<strong>低于</strong>当前cost时，才会更新。若相等，则不会更新。</li>
 </ul>
 <h3 id="A-Algorithm"><a href="#A-Algorithm" class="headerlink" title="A* Algorithm"></a>A* Algorithm</h3><ul>
 <li>Dijkstra算法的改进版，基于<a href="#heuristic%E5%90%AF%E5%8F%91%E5%BC%8F">启发式</a>函数</li>
 <li>所需做的改动就是<strong>加入一个启发式估计信息</strong>-&gt;该节点的成本+我估计该节点好坏程度的总和</li>
 <li>从a到c，途径节点b -&gt; priority(b) = cost(a, b) + <strong>Heuristic(b, c)</strong></li>
 <li>我们按照处理后的优先程度，进行探索</li>
+<li>如果A*算法的效率差，那只有一个原因，你的启发式函数写的烂</li>
+<li>四个大字：<strong>趋利避害</strong></li>
 </ul>
 <h4 id="Heuristic-启发式"><a href="#Heuristic-启发式" class="headerlink" title="Heuristic(启发式)"></a>Heuristic(启发式)</h4><ul>
 <li>一种<strong>有预测的，基于目前已有信息的猜测</strong></li>
 <li>指导解决<strong>接下来的问题</strong></li>
 <li>在图的问题中，如果我们能<strong>预估中间点到达目的地时的好坏程度</strong>-&gt;启发式方法</li>
 <li>制定一个<strong>可接受的</strong>启发是非常重要的：因为有时候这个预测可能<strong>过于乐观</strong>，导致实际结果与预测偏差过大</li>
+<li>如果你的估计小于或等于你的正确答案，那就意味着他不会破坏你的优先队列，这也就是我们想要的。如果你的估计比正确答案差，那么就会导致较好的路径被排在后面，你无法探寻到最优的路径，从而毁掉整个算法</li>
 </ul>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/12/31/20231231-%E4%BF%A1/" title="20231231_信"><span class="has-text-weight-semibold">下一页: 20231231_信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Mostlyharmlessxyz"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Mostly_Hamrless 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
+<h3 id="Spanning-tree-生成树🌲"><a href="#Spanning-tree-生成树🌲" class="headerlink" title="Spanning tree(生成树🌲)"></a>Spanning tree(生成树🌲)</h3><ul>
+<li>从原图中提取出部分边，确保图中的每一个节点都相互连接，但是没有任何的回环存在。</li>
+<li>迷宫可视为二维图的生成树</li>
+</ul>
+<h4 id="Minimum-spanning-tree-MST最小生成树"><a href="#Minimum-spanning-tree-MST最小生成树" class="headerlink" title="Minimum spanning tree(MST最小生成树)"></a>Minimum spanning tree(MST最小生成树)</h4><ul>
+<li>总权重最小的生成树</li>
+<li>利用 Kruskal’s algorithm来寻找MST<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240204/image.3hp849jz46tc.png" alt="image"></li>
+</ul>
+<h4 id="Kruskal’s-algorithm"><a href="#Kruskal’s-algorithm" class="headerlink" title="Kruskal’s algorithm"></a>Kruskal’s algorithm</h4><p>按照我自己的理解说一下吧：</p>
+<ol>
+<li>把<strong>所有的edge</strong>按<strong>权重</strong>翻到一个 <code>pqueue</code>里</li>
+<li>pop()，然后判断<strong>这条edge是否回生成loop</strong></li>
+<li>若不生成，就连上。生成就跳过</li>
+<li>最后当pqueue为空时，即生成了最小生成树</li>
+</ol>
+<h1 id="Part-8"><a href="#Part-8" class="headerlink" title="Part 8"></a>Part 8</h1><h2 id="Inheritance-继承"><a href="#Inheritance-继承" class="headerlink" title="Inheritance(继承)"></a>Inheritance(继承)</h2><ul>
+<li>基于原有的class生成新的class，并继承原有class的特性<ul>
+<li>base class: Parent class that is being extended.</li>
+<li>derived class: Child class that inherits from the base class.</li>
+</ul>
+</li>
+<li>共享了很多<strong>公共的代码</strong>，降低了重复性</li>
+</ul>
+<pre><code class="cpp">class Name :public base class{
+</code></pre>
+<ul>
+<li><strong>overriding</strong>: 在derived class重写base class中的一个函数/方法</li>
+<li><strong>virtual function</strong>: 只有在base class的.h文件中各函数前面声明 <code>virtual</code>的函数/方法才可以重写<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240205/image.50w15pvtrc74.webp" alt="image"></li>
+<li><strong>Pure virtual functions</strong>: 如果你想定义一个virtual函数，这个函数的内部定义必须由每个derived class自行决定，那该如何在base class内定义呢？这么写⬇️</li>
+</ul>
+<pre><code class="cpp">virtual void function() = 0;
+// 是的。没有错，就是加一个 = 0 就可以了 
+</code></pre>
+<p><em>注意：纯虚化的class是不被允许的，因为在编译器看来，这个类是一个不完整的实体(entity)</em></p>
+<ul>
+<li>Private inheritance(私有继承)<ul>
+<li>和 <code>class</code>定义的 <code>private</code>和 <code>public</code>很像。就是外部代码不知道你继承了这个类</li>
+<li>这是一个不太好的特性，如果你需要使用私有继承，那么可能<strong>意味着你的设计存在问题</strong></li>
+</ul>
+</li>
+<li>Multiple inheritance(多重继承)<ul>
+<li>有时候还不错。但是有时会大幅的增加代码的复杂性，以及导致混淆和不明确。</li>
+<li>比如你继承的两个class中都有同一种方法，那么当你调用的时候，你用的是哪个？</li>
+<li>类似Java等大部分语言都不支持这一特性</li>
+</ul>
+</li>
+</ul>
+<pre><code class="cpp">class Name : public Superclass1, public Superclass2, ......
+</code></pre>
+<ul>
+<li><strong>Favor composition over inheritance</strong><ul>
+<li>先想组合，再寻思继承</li>
+<li>如果你需要在一个类中用到 <code>Vector</code>，那就在private里直接定义一个 <code>Vector</code>来用就好了</li>
+</ul>
+</li>
+</ul>
+<h3 id="一些不应滥用inheritance的情况"><a href="#一些不应滥用inheritance的情况" class="headerlink" title="一些不应滥用inheritance的情况"></a>一些不应滥用inheritance的情况</h3><ul>
+<li>例如：<ul>
+<li>当你需要一个<strong>三维坐标</strong>，然后你将你的 <code>Point2D</code>加入了一个z轴坐标，拓展成 <code>Point3D</code><ul>
+<li><code>distance()</code>会出错</li>
+</ul>
+</li>
+<li>当你需要一个<strong>正方形</strong>，然后你将你的 <code>Rectangle(矩形)</code>内部修改成长和宽相同，得到 <code>Square</code><ul>
+<li><code>Rectangle</code>支持 <code>Square</code>不支持的操作(例如 <code>setWidth()</code>)</li>
+</ul>
+</li>
+<li>当你需要一个<strong>排好序的Vector</strong>，然后你将你的 <code>Vector</code>内部的 <code>add()</code>修改为每次添加后排序/插入到对应的位置，得到 <code>SortedVector</code><ul>
+<li><code>SortedVector</code>可能会使用户懵了：刚把一个元素插入到一个 <code>index</code>里，立即check那个 <code>index</code>的元素，结果发现不是刚才放进去的元素.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>这些inheritance都可能会导致<strong>你不得不对代码和结构进行大量修改，以避免可能出现的各类错误</strong></li>
+<li>如果你不能<strong>毫不惊讶地用一个类替代另一个</strong>，那就是inheritance的不当使用.</li>
+</ul>
+<h2 id="Hashing-哈希"><a href="#Hashing-哈希" class="headerlink" title="Hashing(哈希)"></a>Hashing(哈希)</h2><ul>
+<li><p>将<strong>较大范围的值</strong>映射到<strong>较小范围内的索引</strong>的过程</p>
+</li>
+<li><p>Hash Table(哈希表): An array that stores elements via hashing.</p>
+</li>
+<li><p>Hash function(哈希函数): An algorithm that maps values to indexes.</p>
+</li>
+<li><p>Hash code(哈希值): The output of a hash function for a given value.</p>
+</li>
+<li><p>Hash化后，所有的时间复杂度都会变成<strong>O(1)</strong></p>
+</li>
+<li><p>还有一个十分重要的问题：<strong>对于其他类型(除了int）的数据</strong>，我们能否<strong>获得对象的状态并将其转化成一个可重现的整数</strong></p>
+<ul>
+<li>例如对于字符串，可以将其所有字符转换成对应的ASCII码，并相加-&gt;该字符串的hashcode.<strong>但是这个会导致大量的碰撞</strong>，于是有人研究出来了下面的算法⬇️(也是Java在hash化string时的算法)<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240205/image.6d7at9nh3mv4.png" alt="image"></li>
+<li>对于其他的一些数据类型，可以通过<strong>与一些奇怪的常数进行组合拼凑</strong>来使之分散化<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240205/image.3hny1cf0oy9s.webp" alt="image"></li>
+</ul>
+</li>
+<li><p>若出现了<strong>冲突怎么办？</strong></p>
+</li>
+<li><p>—&gt; 一个合格的Hash算法需要有解决冲突的机制</p>
+</li>
+</ul>
+<h3 id="Separating-chaining"><a href="#Separating-chaining" class="headerlink" title="Separating chaining"></a>Separating chaining</h3><ul>
+<li>通过在每个index处构建一个vector/linked list来解决冲突的问题</li>
+<li>这是大部分hash数据结构通用的解决方法，STL/Java/SPL……</li>
+<li>add(): 放到链表表头处，很熟悉的操作了，降低时间复杂度。唯一麻烦的是<strong>你需要遍历整个链表来检查是否重复</strong>。但是，就算我们<strong>允许重复项</strong>也可以实现Set的结构(因为我们从外部看只会判断<strong>有没有</strong>  )</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240205/image.6mr1di8w6igw.png" alt="image"></p>
+<h3 id="Rehashing"><a href="#Rehashing" class="headerlink" title="Rehashing"></a>Rehashing</h3><ul>
+<li>当hashTable将要被填满时，重新调整其大小的过程。</li>
+<li>一种算法是 如果链表的长度超过某个特定值，那么就可以进行重新哈希</li>
+<li>故HashSet可以维护一个有关自身的量 -&gt; <code>load factor 负载因子</code><ul>
+<li>(元素数量) / (HashTable长度/容量)</li>
+<li>你可以在HashSet中设定一个双精度的常数，作为<strong>何时进行rehash的标准</strong></li>
+<li>一般是0.75/0.66</li>
+</ul>
+</li>
+<li>大小的修改<strong>要做乘法</strong>，这样才会有显著的性能改变</li>
+</ul>
+<h3 id="Good-hashCode-behavior"><a href="#Good-hashCode-behavior" class="headerlink" title="Good hashCode behavior"></a>Good hashCode behavior</h3><ul>
+<li>一个合格的哈希算法要求<ul>
+<li>(MUST)<strong>hashCode(x) == hashCode(x)</strong>,if x’s state doesn’t change</li>
+<li>(MUST)<strong>a == b</strong> &lt;=&gt; <strong>hashCode(a) == hashCode(b)</strong>. And <strong>hashCode(a) != hashCode(b)</strong> -&gt; <strong>a != b</strong><br>-(DESIRED) Good distribution of hash codes<ul>
+<li>For a large set of distinct values, they should generally return unique hash codes rather than often colliding into the same hash bucket.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Sorting"><a href="#Sorting" class="headerlink" title="Sorting"></a>Sorting</h2><ul>
+<li>将一些位于数组的元素按照某些特定的要求进行排序</li>
+<li>类似 <code>number</code>/<code>string</code>等元 素有一套<strong>自然的排序方式</strong></li>
+</ul>
+<h3 id="Selection-sort"><a href="#Selection-sort" class="headerlink" title="Selection sort"></a>Selection sort</h3><ul>
+<li>遍历数组，找到最大/最小的值，放到最前面(swap)</li>
+<li>重复遍历未排序的数组，重复上述动作，直至数组有序</li>
+<li>O(n^2)</li>
+</ul>
+<pre><code class="cpp">// Rearranges elements of v into sorted order.
+void selectionSort(Vector&lt;int&gt;&amp; v) {
+    for (int i = 0; i &lt; v.size() - 1; i++) {
+        // find index of smallest remaining value
+        int min = i;
+        for (int j = i + 1; j &lt; v.size(); j++) {
+            if (v[j] &lt; v[min]) {
+                min = j;
+            }
+        }
+        // swap smallest value to proper place, v[i]
+        if (i != min) {
+            int temp = v[i];
+            v[i] = v[min];
+            v[min] = temp;
+        }
+    }
+}
+</code></pre>
+<h3 id="Insertion-sort"><a href="#Insertion-sort" class="headerlink" title="Insertion sort"></a>Insertion sort</h3><ul>
+<li>把每个元素插入到一个已经有序的数组中(要先遍历那个有序的数组来找位置)</li>
+<li>原理上和<a href="#selection-sort">Selection sort</a>很像</li>
+<li>O(n^2) -&gt; 比<a href="#selection-sort">Selection sort</a>略快一点</li>
+</ul>
+<pre><code class="cpp">// Function to perform insertion sort on the vector
+void insertionSort(Vector&lt;int&gt;&amp; v) {
+    int i, key, j;
+    for (i = 1; i &lt; v.size(); i++) {
+        key = v[i]; // Take the current element
+        j = i - 1;
+
+        // Move elements of v[0..i-1], that are greater than key,
+        // to one position ahead of their current position
+        while (j &gt;= 0 &amp;&amp; v[j] &gt; key) {
+            v[j + 1] = v[j];
+            j = j - 1;
+        }
+        v[j + 1] = key; // Place the current element at its correct position
+    }
+}
+</code></pre>
+<h3 id="Merge-sort"><a href="#Merge-sort" class="headerlink" title="Merge sort"></a>Merge sort</h3><ul>
+<li>将<strong>未排序的数组分成两半</strong>，将这两部分进行<strong>排序</strong>，然后<strong>合并成一个有序的整体</strong></li>
+<li>再结合<strong>递归</strong></li>
+<li>O(N logN) // 合并是N，拆分是logN<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240206/image.6fkkiyr21gn4.png" alt="image"></li>
+</ul>
+<pre><code class="cpp">void mergeSort(Vector&lt;int&gt;&amp; v) {
+   if(v.size() &gt;= 2) {
+      // split array in half
+      Vector&lt;int&gt; left = v.subList(0, v.size() / 2);
+      Vector&lt;int&gt; right = v.subList(v.size() / 2, v.size() - left.size());
+
+      // sort halves
+      mergeSort(left);
+      mergeSort(right);
+
+      // merge halves
+      int i1 = 0;
+      int i2 = 0;
+      for(int i = 0;i &lt; v.size(); i++) {
+         if((i2 &gt;= right.size())||(i1 &lt; left.size() &amp;&amp; left[i1] &lt;= right[i2])) {
+            v[i] = left[i1];
+            i1++;
+         }else {
+            v[i] = right[i2];
+            i2++;
+         }
+      }
+
+   }else {
+      // do nothing.
+   }
+</code></pre>
+<h3 id="Quick-sort"><a href="#Quick-sort" class="headerlink" title="Quick sort"></a>Quick sort</h3><ul>
+<li>某种程度上与<a href="#merge-sort">MergeSort</a>很类似，也采用了<strong>分治</strong>的思想。但快排不是<strong>稳定排序</strong>，而归并是<strong>稳定排序</strong> -&gt; <strong>这也就是为什么快排没有被稳定使用的原因</strong><ul>
+<li>一个算法是<strong>稳定</strong>的 &lt;=&gt; 在排序前后，<strong>相等元素</strong>的相对位置<strong>不变</strong></li>
+</ul>
+</li>
+<li>快排效率的核心是<strong>选择一个合适的枢轴(pivot)<strong>，你希望枢轴大概是</strong>数组的中位数</strong></li>
+<li>详见<a target="_blank" rel="noopener" href="https://lzh-xyz.github.io/2023/11/19/20231119-Sort/">Sort_Note</a></li>
+</ul>
+<hr>
+<h2 id="Templates-模板"><a href="#Templates-模板" class="headerlink" title="Templates(模板)"></a>Templates(模板)</h2><ul>
+<li>可以传递各种类型的“自己”</li>
+</ul>
+<pre><code class="cpp">template&lt;typename T&gt;
+T max(T a, T b) {
+   if (a &lt; b) {
+      return a;
+   }else{
+      return b;
+   }
+}
+
+int i = max(17, 4);
+string s = max(string("HI"), string("My Darling"));
+double d = max(3.3, 4.2);
+</code></pre>
+<h3 id="Template-Class"><a href="#Template-Class" class="headerlink" title="Template Class"></a>Template Class</h3><pre><code class="cpp">// ClassName.h
+template&lt;typename T&gt;
+class ClassName {
+   ......
+};
+
+// ClassName.cpp
+type ClassName::name(parameters) {
+   ......
+}
+</code></pre>
+<p>例子⬇️</p>
+<pre><code class="cpp">template &lt;typename T&gt; class ArrayList {
+public:
+    ArrayList();
+    ~ArrayList();
+    void add(T value);
+    void clear();
+    T get(int index) const;
+    void insert(int index, T value);
+    bool isEmpty() const;
+    void remove(int index);
+    void set(int index, T value) const;
+    int size() const;
+    string toString() const;
+
+private:
+    T* elements;
+    int m_size;
+    int capacity;
+    void checkIndex(int index, int min, int max) const;
+    void checkResize();
+};
+</code></pre>
+<h2 id="Standard-Template-Library-STL"><a href="#Standard-Template-Library-STL" class="headerlink" title="Standard Template Library(STL)"></a>Standard Template Library(STL)</h2><ul>
+<li>一些C++内置的类和方法<ul>
+<li>container(collection) 容器</li>
+<li>algorithm             算法</li>
+<li>functional programming</li>
+<li>iterator              迭代器</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240207/image.66s0awp4a29s.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240207/image.2fwcrg6xty9s.webp" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240207/image.38w631jgna2.webp" alt="image"></p>
+<h2 id="Smart-Pointer"><a href="#Smart-Pointer" class="headerlink" title="Smart Pointer"></a>Smart Pointer</h2><p>A stack-allocated container that can store a pointer to data on the heap and free it automatically later.</p>
+<ul>
+<li>Added to C++ in the C++11 version of the language</li>
+<li>Prior to this, many coders used Boost library or others</li>
+<li>C++ Smart Pointer Types</li>
+</ul>
+<pre><code class="cpp">#include &lt;memory&gt;
+</code></pre>
+<ul>
+<li><code>unique_ptr</code> // exactly 1 “owner”; best one</li>
+<li><code>shared_ptr</code> // multiple “owners”; use sparingly</li>
+<li><code>weak_ptr</code>   // use sparingly</li>
+<li><code>auto_ptr</code>   // deprecated; do not use!</li>
+</ul>
+<p>Common concept: notion of “ownership” of a heap-allocated pointer; who is responsible for deleting/freeing it later?</p>
+<pre><code class="cpp">unique_ptr&lt;T&gt; name(heapObject);
+
+void foo(){
+   unique_ptr&lt;ListNode&gt; p(new ListNode());
+   p-&gt;data = 42;
+   p-&gt;next = nullptr;
+   ...
+   p.reset(new ListNode());   // frees prior node
+   p-&gt;data = 19;
+   p-&gt;next = nullptr;
+   ...
+   if(p){...}                 // non-null
+   // node will be freed here!
+}
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/20240207/image.1huh71rudl40.webp" alt="image"></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2024/02/17/%E9%80%92%E5%BD%92%E6%89%93%E5%8D%B0-P1928/" title="递归打印_P1928"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: 递归打印_P1928</span></a><a class="button is-default" href="/2023/12/31/20231231-%E4%BF%A1/" title="20231231_信"><span class="has-text-weight-semibold">下一页: 20231231_信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Mostlyharmlessxyz"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Mostly_Hamrless 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>

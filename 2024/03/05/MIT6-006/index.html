@@ -1,0 +1,122 @@
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>MIT6.006</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Hashing在现有的模型(有诸多限制)下执行find的时间不会低于 logN。证明：利用 comparison model(比较模型) -&amp;gt; =, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;= 其就是将待处理的数据视为黑箱，处理时不直接接触数据，而是比较两者所关联的Key。
+比较模型的一个例子：决策树。来到某个节点，进行某种比较操作，如果是True，则xxxxx，如果是False，则xxxxx……继续接下来的计算操作，直到来到这棵树的叶子节点(意味着接下来没有比较操作了) 树内的每一个节点都是比较操作，但是在叶子节点，意味着我得停止现在的计算操作。
+那么叶子节点的数量代表着什么呢？其代表可能的结果数。对于一个合格的比较搜索算法而言，我们需要一个额外的叶子节点，来代表无结果/异常情况/给定Key对.."><meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Mostly_Harmless的碎碎念" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Mostly_Hamrless's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">MIT6.006</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hashing"><span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linear-Sort"><span class="toc-text">Linear Sort</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DAA-Direct-Access-Array-Sort"><span class="toc-text">DAA(Direct Access Array) Sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Counting-Sort"><span class="toc-text">Counting Sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Radix-Sort"><span class="toc-text">Radix Sort</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Binary-Trees-%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">Binary Trees 二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9F"><span class="toc-text">什么是二叉树？</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">笔记</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">MIT6.006</h1><time class="has-text-grey" datetime="2024-03-05T03:31:11.000Z">2024-03-05</time><article class="mt-2 post-content"><h1 id="Hashing"><a href="#Hashing" class="headerlink" title="Hashing"></a>Hashing</h1><p>在现有的模型(有诸多限制)下执行find的时间不会低于 <code>logN</code>。<br>证明：利用 <code>comparison model(比较模型)</code> -&gt; =, &lt;, &gt;, &lt;=, &gt;= 其就是将待处理的数据视为黑箱，处理时不直接接触数据，而是比较两者所关联的Key。</p>
+<p>比较模型的一个例子：决策树。来到某个节点，进行某种比较操作，如果是True，则xxxxx，如果是False，则xxxxx……继续接下来的计算操作，直到来到<strong>这棵树的叶子节点</strong>(意味着接下来没有比较操作了) 树内的每一个节点都是比较操作，但是在叶子节点，意味着我得停止现在的计算操作。</p>
+<p>那么叶子节点的数量代表着什么呢？其代表<strong>可能的结果数</strong>。对于一个合格的比较搜索算法而言，我们需要一个额外的叶子节点，来代表<strong>无结果/异常情况/给定Key对应的item不在Set中</strong>，也就是说这里至少需要 <code>n+1</code>个叶子节点。</p>
+<p>此时，我们可以得到：这个算法的<strong>比较次数</strong>就是<strong>这棵树的最小高度(平衡二叉树-&gt;logN)<strong>。我们考虑最坏的情况下，我们必须从Root走到Leaf，那条路径就是</strong>最长路径</strong>。</p>
+<p>如果我们想更快，怎么办？ 现实中，如果给定的父节点下的子节点数是一个常数(常数因子)，只要节点数是被常数限制的，那么这个效率永远最快只能达到对数级别，无法再快下去了。所以我们<strong>必须将节点数扩大到N的量级</strong>。</p>
+<p>我们在Lec2中的RAM有提到，可以根据<strong>一个数字(内存地址)<strong>在</strong>常数恒定时间</strong>来随机访问内存中的任何位置。</p>
+<p>所以我们或许可以使用 <code>直接访问数组</code>，就是<strong>Array[key] = item</strong>，这使得我们在 <code>find</code>, <code>insert</code>, <code>delete</code>都达到了常数级的时间。其显著的缺点就是<strong>空间的极度浪费</strong>。于是我们要做一件事情: “将一组大范围的key映射到一个小空间内”</p>
+<p>那如何解决碰撞问题呢？<strong>在发生碰撞的Key对应的位置处，存放一个指针，指向另一数据结构Q，通过Q来存储这些发生碰撞的数据</strong>我们称Q为<strong>链</strong>，我们要选择<strong>合适的Hash算法</strong>，确保每个链都<strong>足够短</strong></p>
+<p>可以将数组的每个元素存放为一个我们自己设计的class对象，该class数据结构都会有一个指针指向另一chain数据结构和一个value字段用来存item以及一个 <code>ischain</code>的布尔字段，当有多个冲突item时，<code>ischain</code>为 <code>true</code>，然后<em>value设置一个固定的标记</em>，并将item存于chain中</p>
+<p>最简单的Hash函数就是<strong>取模</strong>，我们称之为分割法。但是这种方法在对分散度不好的input时，效果比较差。故我们在其基础上加入<strong>乱序混合处理+位操作</strong>，创建<strong>通用Hash函数</strong></p>
+<p>通用Hash函数：h(k) = ((ak+b) mod p) mod m (m是小范围的范围值，p为一个较大的素数)<br>然后我们使a,b在0～p-1内随机取值(a != 0)，借此来形成一个函数的族。<br>通用性：如下图，发生碰撞的概率不高于1/m，这就是衡量<strong>分布情况</strong>的指标<br><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/image.9dcp8iw4ad.webp" alt="image"></p>
+<h1 id="Linear-Sort"><a href="#Linear-Sort" class="headerlink" title="Linear Sort"></a>Linear Sort</h1><h2 id="DAA-Direct-Access-Array-Sort"><a href="#DAA-Direct-Access-Array-Sort" class="headerlink" title="DAA(Direct Access Array) Sort"></a>DAA(Direct Access Array) Sort</h2><ul>
+<li>构造DAA                                       -&gt; O(u)</li>
+<li>存储所有的元素，将 <code>元素x</code>存储在 <code>index[x.key]</code>处   -&gt; n*O(1)</li>
+<li>沿着DAA，按顺序返回所有存在的元素                 -&gt; O(u)</li>
+<li>=&gt;需要O(n + u). u = θ(n) -&gt; O(n) 达成了线性排序<br>这里我们假定每个 <code>item</code>都有一个 <code>key</code>，这样我们在进行 <code>Step2</code>时就可以<strong>直接进行复制</strong>。使得排序的对象不仅仅局限在整数</li>
+</ul>
+<hr>
+<p>Q：如果 u &lt; n^2， 那么按照上面的👆推算，此时效率来到了O(n^2) 如何解决？<br>A：我们可以将每一个key都用 **一组数字(a, b)** 来表示。k=&gt;(a, b) = a * n + b. 这样我们就可以根据a与b的大小来比较key之间的大小。<code>divmod</code>这个转换是常数时间操作<br>Eg： {17, 3, 24, 22, 12}, n = 5 -&gt; {(3, 2), (0, 3), (4, 4), (4, 2), (2, 2)}</p>
+<ul>
+<li>如何对这些数字进行排序？ ——<code>tuple sort</code>元组排序，类似于Excel表格排序(优先级)</li>
+<li>把上面的数组写成{32, 03, 44, 42, 22}</li>
+</ul>
+<ol>
+<li><strong>按照最高位的大小进行排序</strong> =&gt; {03, 22, 32, 44, 42}(不打乱相同最高位数字间的相对顺序，例如44与42) =&gt; 下移一位，Repeat这个过程 之后你就会发现，数组会完全变乱 {22, 32, 42, 03, 44} BAD!</li>
+<li><strong>按照最低位的大小进行排序</strong> =&gt; {32, 42, 22, 03, 44} =&gt; {03, 22, 32, 42, 44} <strong>我们需要一个stable排序算法</strong></li>
+<li>DAA？不行，因为这里有相同的元素(例如42，44 其最高位相同)</li>
+</ol>
+<p>tuples中的<strong>元素数量为k，k为常数</strong> (例如上面的例子里，k = 2) ，最终花费的时间为kn，渐进时间复杂度才为O(n).但是这里我们进行单次排序显然不能用 <code>DAA</code>来进行处理了，怎么办呢？</p>
+<h2 id="Counting-Sort"><a href="#Counting-Sort" class="headerlink" title="Counting Sort"></a>Counting Sort</h2><ul>
+<li>我们为什么不在一个key上放更多的元素？(key对应的value为一个list/vector之类的collection)</li>
+<li>我们依旧维护一个0～u-1的数组，在 <code>index k</code>处，我们存储一个指向 <code>chain</code>的 <code>pointer</code>，<strong>重要的是，我们要确保在插入时，维护并保持它们进入时的顺序，也就是需要排序算法时stable的</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/image.45f9x8xa4.webp" alt="image"><br>这张图里 u = n，u的大小也是可以改变的。</p>
+<h2 id="Radix-Sort"><a href="#Radix-Sort" class="headerlink" title="Radix Sort"></a>Radix Sort</h2><ul>
+<li>Radix Sort会将最大为u的整数分解为一个base的tuple， 位数为logn(u),其中n为底数</li>
+<li>随后用 <code>counting sort</code>对数字进行 <code>tuple sort</code> 从最低位到最高位</li>
+<li>时间复杂度 = n + n*logn(u) 当 <code>u &lt; n^c</code>时，这是一个线性时间算法</li>
+</ul>
+<hr>
+<p>总结(in-place即占用常数内存)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/MostlyHarmlessxyz/picx-images-hosting@master/image.1aoqijjq8e.webp" alt="image"></p>
+<h1 id="Binary-Trees-二叉树"><a href="#Binary-Trees-二叉树" class="headerlink" title="Binary Trees 二叉树"></a>Binary Trees 二叉树</h1><p>有史以来最酷的数据结构</p>
+<p>将要介绍一个数据结构，它能够<strong>秒杀</strong>此前学过的所有数据结构，并能几乎做到所有事情。</p>
+<h2 id="什么是二叉树？"><a href="#什么是二叉树？" class="headerlink" title="什么是二叉树？"></a>什么是二叉树？</h2><ul>
+<li>由若干节点构成类似于树的形状</li>
+<li>每个节点包含三个指针，分别指向<code>父节点</code>、<code>右子节点</code>、<code>左子节点</code>，节点内部存储<code>item</code></li>
+<li>没有父节点的节点称作<code>根节点 root</code>，也是<strong>唯一</strong>没有父节点的节点</li>
+<li>弥补了<strong>链表无法回溯/效率低的缺陷</strong>(通过增加指针数量)</li>
+<li>数可以分解为<strong>子树</strong>: 以x为根节点的子树由其x本身及其所有后代节点构成</li>
+<li>节点的<strong>深度(depth)<strong>：</strong>x到根节点的路径上边的数量</strong> / <strong>祖先数量</strong></li>
+<li>节点的<strong>高度(height)</strong>: 该节点向下到叶子节点<strong>最长路径的边数</strong> = <strong>以该节点为根节点的子树的最大深度</strong></li>
+<li>h = height(root) = height(tree)</li>
+<li>🌲的高度是明确的，但是其<strong>深度</strong>是不明确的</li>
+<li>每个树都有<strong>traversal order</strong>的方式，递归规则是：对于每个节点x来说，所有在X.left子树中的节点先于x，所有在X.right子树中的节点后于x</li>
+<li><strong>不要尝试去维护一个traversal order的数组</strong>，成本太大，并且复杂</li>
+<li>TODO: <strong>把我们所有关心的运算都变成O(h)类的效率</strong></li>
+</ul>
+<hr>
+<ul>
+<li><p>以下的方法除了特别说明以外，时空复杂度全部为<code>O(h)</code></p>
+</li>
+<li><p>subtree_first(node):<br>通过给定的节点来获得一棵子树，在这个子树的所有节点中，哪个在<code>traversal order</code>排在第一位。  </p>
+<ul>
+<li>也就是<strong>最左端的节点</strong>。一直往左走：遍历条件是<strong>node=node.left</strong>，遍历到<code>NULL</code>节点时停下</li>
+<li>return node;</li>
+</ul>
+</li>
+<li><p>successor(node):<br>在整棵树的<code>traversal order</code>中，该node的下一个节点是谁</p>
+<ul>
+<li>if 该节点有一个右子节点，那么就是<code>subtree_first(node.right)</code></li>
+<li>else 该节点没有右子节点，那么策略就是：往上走，直到遇见第一个向左方向遍历的节点。遍历条件是<strong>node=node.parent</strong>, 遍历到<strong>node==node.parent.left</strong></li>
+<li>return node;</li>
+</ul>
+</li>
+<li><p>subtree_insert_after(node, new):<br>在<code>traversal order</code>中将<code>new</code>插入到<code>node</code>的后面</p>
+<ul>
+<li>if node无右子节点，直接令 <code>node.right = new</code></li>
+<li>else 令 <code>subtree_first(node.right).left = new</code> / <code>successor(node).left = new</code></li>
+</ul>
+</li>
+<li><p>subtree_delete(node):</p>
+<ul>
+<li>if node为叶子节点，直接delete</li>
+<li>else <ul>
+<li>if node.left存在:<ul>
+<li>将node里的item与predecessor(node)里的item交换一下</li>
+<li>递归执行<code>subtree_delete(predecessor(node))</code></li>
+</ul>
+</li>
+<li>if node.right存在：<ul>
+<li>将node里的item与successor(node)里的item交换一下</li>
+<li>递归执行<code>subtree_delete(successor(node))</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>实现<code>Sequence</code><ul>
+<li>只需树的<code>traversal order</code>等于sequence内部item的顺序即可</li>
+</ul>
+</li>
+<li>实现<code>Set</code> =&gt; BST 二叉搜索树/Set二叉树<ul>
+<li>只需树的<code>traversal order</code>等价于item.key的增长的顺序即可</li>
+<li>特性：左节点的子树中的所有节点都小于该节点，右节点的则反之</li>
+<li>find(k): <strong>二分搜索</strong></li>
+<li>find_next / find_prev 就分别对应找到那个节点的<code>successor</code>和<code>predecessor</code></li>
+</ul>
+</li>
+</ul>
+<p>Lec7</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2024/02/28/test/" title="test"><span class="has-text-weight-semibold">下一页: test</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Mostlyharmlessxyz"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> Mostly_Hamrless 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
